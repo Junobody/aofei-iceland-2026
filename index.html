@@ -1248,6 +1248,42 @@
       .day-card-content {
         padding: 0 16px 20px;
       }
+      .flight-cards-container {
+        display: flex;
+        gap: 14px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        margin-left: -20px;
+        margin-right: -20px;
+        padding: 0 20px 12px;
+        scroll-padding-inline: 20px;
+        scroll-snap-type: x mandatory;
+        overscroll-behavior-inline: contain;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .flight-cards-container::-webkit-scrollbar {
+        display: none;
+      }
+      .flight-cards-container:focus-visible {
+        outline: 2px solid var(--gold-accent);
+        outline-offset: 3px;
+      }
+      .flight-card {
+        flex: 0 0 min(74vw, 320px);
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+      }
+      .flight-card-header {
+        gap: 8px;
+        padding: 12px 14px;
+      }
+      .flight-card-body {
+        padding: 16px;
+      }
+      .flight-arrow {
+        padding: 0 8px;
+      }
       .attractions-grid {
         display: flex;
         gap: 14px;
@@ -1297,6 +1333,9 @@
       }
       .specs-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+      .spec-value {
+        font-size: 0.85rem;
       }
       footer p:nth-of-type(1) {
         font-size: 0.75rem !important;
@@ -1380,7 +1419,7 @@
       <h2 class="section-title">航班信息</h2>
     </div>
 
-    <div class="flight-cards-container">
+    <div class="flight-cards-container" tabindex="0" role="group" aria-label="航班卡片列表">
       <!-- Outbound 1 -->
       <div class="flight-card">
         <div class="flight-card-header">
