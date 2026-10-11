@@ -1248,6 +1248,13 @@
       .day-card-content {
         padding: 0 16px 20px;
       }
+      .back-to-top {
+        bottom: calc(72px + env(safe-area-inset-bottom));
+        right: 16px;
+        width: 48px;
+        height: 48px;
+        touch-action: manipulation;
+      }
       .flight-cards-container {
         display: flex;
         gap: 14px;
@@ -1364,7 +1371,7 @@
   <!-- Sticky Nav Tabs -->
   <nav class="sticky-tabs"  id="stickyNav">
         <div class="tabs-track">
-      <a href="#flights" class="tab-btn active"><span>✈️</span> 航班信息</a>
+      <a href="#page-top" data-scrollspy-target="#flights" class="tab-btn active"><span>✈️</span> 基础信息与航班</a>
       <a href="#brief" class="tab-btn"><span>🗺️</span> 行程简要</a>
       <a href="#day-by-day" class="tab-btn"><span>🧭</span> 每日详细行程</a>
       <a href="#guide" class="tab-btn"><span>📖</span> 目的地指南</a>
@@ -3101,6 +3108,19 @@
     }
 
     // Back to top & active tabs on scroll
+    const backToTopButton = document.getElementById('backToTop');
+    if (backToTopButton) {
+      backToTopButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+        try {
+          window.scrollTo({ top: 0, behavior });
+        } catch (error) {
+          window.scrollTo(0, 0);
+        }
+      });
+    }
+
     window.addEventListener('scroll', () => {
       const btn = document.getElementById('backToTop');
       if (window.scrollY > 400) {
@@ -3117,7 +3137,7 @@
 
       const tabBtns = Array.from(stickyNav.getElementsByClassName('tab-btn'));
       const sectionTabs = tabBtns.map(tab => {
-        const href = tab.getAttribute('href') || '';
+        const href = tab.getAttribute('data-scrollspy-target') || tab.getAttribute('href') || '';
         const targetId = href.startsWith('#') ? href.slice(1) : '';
         const section = targetId ? document.getElementById(targetId) : null;
         return { tab, section, id: targetId };
