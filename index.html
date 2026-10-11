@@ -108,7 +108,7 @@
     }
     .brand-title {
       font-family: -apple-system, BlinkMacSystemFont, "Plus Jakarta Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
-      font-size: 1.05rem;
+      font-size: 1.25rem;
       letter-spacing: 0.02em;
       color: var(--primary-navy);
       font-weight: 700;
@@ -878,6 +878,13 @@
       margin-bottom: 12px;
       padding-left: 20px;
       position: relative;
+    }
+    .guide-list li.no-dot::before {
+      display: none !important;
+      content: none !important;
+    }
+    .guide-list li.no-dot {
+      padding-left: 0 !important;
     }
     .guide-list li::before {
       content: "•";
@@ -2302,7 +2309,7 @@
       <!-- 5. 旅游安全注意事项 -->
       <div class="guide-item">
         <div class="guide-header" onclick="toggleGuide(this)">
-          <h3><span>🛡️</span> 旅游安全注意事项（天气路况、疯狗浪、冰川、温泉、生态）</h3>
+          <h3><span>🛡️</span> 旅游安全注意事项</h3>
           <div class="toggle-icon">▼</div>
         </div>
         <div class="guide-content">
@@ -2335,23 +2342,23 @@
       <!-- 极光指南 -->
       <div class="guide-item">
         <div class="guide-header" onclick="toggleGuide(this)">
-          <h3><span>🌌</span> 极光指南（科学条件、实时预测与观测摄影技巧）</h3>
+          <h3><span>🌌</span> 极光指南</h3>
           <div class="toggle-icon">▼</div>
         </div>
         <div class="guide-content">
           <p style="margin-bottom:12px;">欧若拉（Aurora）是极夜穹顶上最壮丽的天文神迹，也是本次冰岛之旅最为期待的灵魂高潮。为了让各位贵宾科学追光、不错过任何一次与极光女神相遇的奇迹时刻，特此奉上极光探索全指南：</p>
           <ul class="guide-list">
-            <li><strong>【看见极光的必备三大科学条件】</strong><br>
+            <li class="no-dot"><strong>【看见极光的必备三大科学条件】</strong><br>
               • <strong>强烈的太阳风暴活动与地磁扰动（KP指数）：</strong>极光是太阳高能带电粒子流撞击地球高空大气层气体分子激发的发光现象。KP指数（0-9级）是衡量地磁强度的国际标准。冰岛全境处于北纬64°-66°黄金极光环带之下，当KP指数≥2时，只要天晴就能肉眼看见极光；当KP≥3-4时，极光将在天际如缎带般激烈跳跃翻滚并呈现罕见的粉紫边缘；当KP≥5以上，即为极光大爆发，整片苍穹将被绿光撕裂。<br>
               • <strong>晴朗通透、无厚重云层遮挡的夜空：</strong>极光发生在大气层以上80至500公里的外太空边缘，哪怕天空中地磁活动再猛烈，如果低空被厚厚的降水云层死死遮蔽，地面也无法观测。因此，晴朗的夜空是成功追光的关键决胜点。<br>
               • <strong>远离人造光源污染的极致黑暗环境：</strong>城市霓虹、路灯等光害会大幅降低人眼的暗视感度。本次行程精选安排的Hótel Bifröst与Fosshotel Nupar均孤立于广袤荒原之中，推开房门即是辽阔漆黑旷野，赋予了得天独厚的暗夜观测环境。
             </li>
-            <li><strong>【如何科学追踪与观测极光】</strong><br>
+            <li class="no-dot"><strong>【如何科学追踪与观测极光】</strong><br>
               • <strong>权威实时云层与极光图：</strong>登录冰岛气象局权威网站（vedur.is/aurora），图中的绿色区域代表高低云层覆盖，纯白色区域代表晴朗无云通透地带，并结合右上角的实时预测KP指数，科学锁定夜间最佳追光窗口。<br>
               • <strong>手机必备追光App推荐：</strong> My Aurora Forecast & Alerts 或 Aurora Forecast，App会根据您当前所在GPS定位，精准推送未来1小时内的极光爆发几率、云层百分比及地磁参数预警。<br>
               • <strong>黄金观测时间段：</strong>通常在冰岛当地时间夜间21:00至次日凌晨02:00之间最为活跃。在下榻极光酒店期间，可在前台登记“Aurora Wake-up Call”（极光叫醒服务），一旦极光在酒店上空出现，酒店员工将通过房间电话轻声唤醒。
             </li>
-            <li><strong>【极光摄影与手机拍摄参数指南】</strong><br>
+            <li class="no-dot"><strong>【极光摄影与手机拍摄参数指南】</strong><br>
               • <strong>智能手机拍摄技巧（iPhone / 华为 / 小米等）：</strong><br>
               1. 开启“夜景模式”（Night Mode），并将夜景曝光时间手动拉长至3秒至10秒（在极暗环境下配合支架最大可达10-30秒）；<br>
               2. 极光拍摄绝对禁忌手抖！强烈建议携带轻便手机三脚架固定，若手持拍摄，请将手肘支撑在车身或栏杆上保持绝对静止；<br>
