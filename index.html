@@ -160,6 +160,10 @@
       color: #FFFFFF;
       border-bottom-color: var(--gold-accent);
     }
+    /* Keep anchor headings clear of the two sticky bars. */
+    #overview, #flights, #brief, #day-by-day, #guide, #safety-aurora, #checklist {
+      scroll-margin-top: 120px;
+    }
 
     /* Hero Section */
     .hero-section {
@@ -2716,6 +2720,70 @@
         btn.classList.remove('show');
       }
     });
+
+    // Follow the section being read and keep its tab visible in the horizontal nav.
+    const stickyNav = document.getElementById('stickyNav');
+    const sectionTabs = [...stickyNav.querySelectorAll('.tab-btn[href^="#"]')]
+      .map(tab => ({ tab, section: document.getElementById(tab.hash.slice(1)) }))
+      .filter(item => item.section);
+    let currentTab = null;
+    let scrollFrame = 0;
+    let clickedSection = null;
+    let clickLockUntil = 0;
+
+    function activateTab(tab) {
+      if (currentTab === tab) return;
+      currentTab = tab;
+      sectionTabs.forEach(item => item.tab.classList.toggle('active', item.tab === tab));
+
+      // Use the nav's own scroll position; this does not move the page vertically.
+      const navRect = stickyNav.getBoundingClientRect();
+      const tabRect = tab.getBoundingClientRect();
+      const centeredLeft = stickyNav.scrollLeft + tabRect.left - navRect.left
+        - (stickyNav.clientWidth - tabRect.width) / 2;
+      stickyNav.scrollTo({ left: centeredLeft, behavior: 'smooth' });
+    }
+
+    function syncActiveSection() {
+      scrollFrame = 0;
+      if (!sectionTabs.length) return;
+
+      // Keep a clicked tab selected while the page's existing smooth anchor scroll finishes.
+      if (clickedSection && performance.now() < clickLockUntil) {
+        const distance = Math.abs(clickedSection.getBoundingClientRect().top
+          - (stickyNav.getBoundingClientRect().bottom + 8));
+        if (distance > 56) return;
+      }
+      clickedSection = null;
+
+      const readingLine = stickyNav.getBoundingClientRect().bottom + 24;
+      let active = sectionTabs[0].tab;
+      for (const item of sectionTabs) {
+        if (item.section.getBoundingClientRect().top <= readingLine) active = item.tab;
+        else break;
+      }
+      activateTab(active);
+    }
+
+    function scheduleSectionSync() {
+      if (!scrollFrame) scrollFrame = requestAnimationFrame(syncActiveSection);
+    }
+
+    sectionTabs.forEach(({ tab, section }) => {
+      tab.addEventListener('click', () => {
+        clickedSection = section;
+        clickLockUntil = performance.now() + 2000;
+        activateTab(tab);
+        setTimeout(scheduleSectionSync, 2050);
+      });
+    });
+    window.addEventListener('scroll', scheduleSectionSync, { passive: true });
+    window.addEventListener('resize', () => {
+      currentTab = null;
+      scheduleSectionSync();
+    });
+    window.addEventListener('load', scheduleSectionSync);
+    scheduleSectionSync();
 
     // Initialize progress bar
     updateChecklistProgress();
