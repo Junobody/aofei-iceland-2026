@@ -134,6 +134,8 @@
       top: 57px;
       z-index: 999;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
     }
     .sticky-tabs::-webkit-scrollbar {
       display: none;
@@ -143,22 +145,32 @@
       margin: 0 auto;
       display: flex;
       padding: 0 12px;
+      gap: 4px;
     }
     .tab-btn {
       color: rgba(255, 255, 255, 0.75);
       font-size: 0.88rem;
       font-weight: 500;
-      padding: 12px 16px;
+      padding: 10px 16px;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      border-bottom: 2px solid transparent;
+      border-bottom: 3px solid transparent;
       transition: var(--transition);
+      flex-shrink: 0;
+      border-radius: 8px 8px 0 0;
     }
-    .tab-btn:hover, .tab-btn.active {
+    .tab-btn:hover {
       color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .tab-btn.active {
+      color: #FFFFFF;
+      background: rgba(197, 160, 89, 0.25);
       border-bottom-color: var(--gold-accent);
+      font-weight: 700;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
     }
     /* Keep anchor headings clear of the two sticky bars. */
     #overview, #flights, #brief, #day-by-day, #guide, #safety, #aurora, #checklist {
@@ -2497,69 +2509,113 @@
       }
     });
 
-    // Follow the section being read and keep its tab visible in the horizontal nav.
+    // Enhanced Sticky Nav: ScrollSpy & Horizontal Auto-Centering
     const stickyNav = document.getElementById('stickyNav');
-    const sectionTabs = [...stickyNav.querySelectorAll('.tab-btn[href^="#"]')]
+    const sectionTabs = [...stickyNav.querySelectorAll('.tab-btn[href^=#]')]
       .map(tab => ({ tab, section: document.getElementById(tab.hash.slice(1)) }))
       .filter(item => item.section);
-    let currentTab = null;
-    let scrollFrame = 0;
-    let clickedSection = null;
-    let clickLockUntil = 0;
 
-    function activateTab(tab) {
-      if (currentTab === tab) return;
-      currentTab = tab;
-      sectionTabs.forEach(item => item.tab.classList.toggle('active', item.tab === tab));
+    let activeTab = null;
+    let isClickScrolling = false;
+    let clickTimeout = null;
 
-      // Use the nav's own scroll position; this does not move the page vertically.
+    // Smoothly scroll the horizontal navbar container to keep active tab centered
+    function centerTabInNav(tab) {
+      if (!stickyNav || !tab) return;
+      const navWidth = stickyNav.clientWidth;
+      const maxScroll = stickyNav.scrollWidth - navWidth;
+      if (maxScroll <= 0) return; // Navbar width fits screen without scrolling
+
       const navRect = stickyNav.getBoundingClientRect();
       const tabRect = tab.getBoundingClientRect();
-      const centeredLeft = stickyNav.scrollLeft + tabRect.left - navRect.left
-        - (stickyNav.clientWidth - tabRect.width) / 2;
-      stickyNav.scrollTo({ left: centeredLeft, behavior: 'smooth' });
+      // Relative center of the tab within stickyNav's viewport
+      const tabCenterInNav = (tabRect.left - navRect.left) + (tabRect.width / 2);
+      const targetScrollLeft = stickyNav.scrollLeft + (tabCenterInNav - navWidth / 2);
+      const clampedScrollLeft = Math.max(0, Math.min(targetScrollLeft, maxScroll));
+
+      stickyNav.scrollTo({
+        left: clampedScrollLeft,
+        behavior: 'smooth'
+      });
     }
 
-    function syncActiveSection() {
-      scrollFrame = 0;
+    function setActiveTab(tab, shouldCenter = true) {
+      if (!tab) return;
+      if (activeTab === tab) {
+        if (shouldCenter) centerTabInNav(tab);
+        return;
+      }
+      activeTab = tab;
+      sectionTabs.forEach(item => {
+        item.tab.classList.toggle('active', item.tab === tab);
+      });
+      if (shouldCenter) {
+        centerTabInNav(tab);
+      }
+    }
+
+    // Determine current active section on vertical scroll
+    function onScrollSpy() {
+      if (isClickScrolling) return;
       if (!sectionTabs.length) return;
 
-      // Keep a clicked tab selected while the page's existing smooth anchor scroll finishes.
-      if (clickedSection && performance.now() < clickLockUntil) {
-        const distance = Math.abs(clickedSection.getBoundingClientRect().top
-          - (stickyNav.getBoundingClientRect().bottom + 8));
-        if (distance > 56) return;
+      // When reaching near the bottom of page, activate the last tab (Checklist)
+      const scrollBottom = window.innerHeight + window.scrollY;
+      const docHeight = document.documentElement.scrollHeight;
+      if (scrollBottom >= docHeight - 80) {
+        setActiveTab(sectionTabs[sectionTabs.length - 1].tab);
+        return;
       }
-      clickedSection = null;
 
-      const readingLine = stickyNav.getBoundingClientRect().bottom + 24;
-      let active = sectionTabs[0].tab;
-      for (const item of sectionTabs) {
-        if (item.section.getBoundingClientRect().top <= readingLine) active = item.tab;
-        else break;
+      // Calculate trigger line just below the sticky nav bar
+      const navBottom = stickyNav ? stickyNav.getBoundingClientRect().bottom : 100;
+      const triggerLine = navBottom + 60; // 60px lookahead buffer
+
+      let currentActive = sectionTabs[0].tab;
+      for (let i = 0; i < sectionTabs.length; i++) {
+        const rect = sectionTabs[i].section.getBoundingClientRect();
+        if (rect.top <= triggerLine) {
+          currentActive = sectionTabs[i].tab;
+        } else {
+          break;
+        }
       }
-      activateTab(active);
+      setActiveTab(currentActive);
     }
 
-    function scheduleSectionSync() {
-      if (!scrollFrame) scrollFrame = requestAnimationFrame(syncActiveSection);
+    let scrollRaf = null;
+    function scheduleScrollSpy() {
+      if (!scrollRaf) {
+        scrollRaf = requestAnimationFrame(() => {
+          onScrollSpy();
+          scrollRaf = null;
+        });
+      }
     }
 
+    // Tab click handler: smooth scroll page to anchor and center clicked tab
     sectionTabs.forEach(({ tab, section }) => {
-      tab.addEventListener('click', () => {
-        clickedSection = section;
-        clickLockUntil = performance.now() + 2000;
-        activateTab(tab);
-        setTimeout(scheduleSectionSync, 2050);
+      tab.addEventListener('click', (e) => {
+        isClickScrolling = true;
+        clearTimeout(clickTimeout);
+        setActiveTab(tab, true);
+        // Unlock scrollspy after the browser smooth scroll animation finishes
+        clickTimeout = setTimeout(() => {
+          isClickScrolling = false;
+          onScrollSpy();
+        }, 850);
       });
     });
-    window.addEventListener('scroll', scheduleSectionSync, { passive: true });
+
+    window.addEventListener('scroll', scheduleScrollSpy, { passive: true });
     window.addEventListener('resize', () => {
-      currentTab = null;
-      scheduleSectionSync();
+      centerTabInNav(activeTab);
     });
-    window.addEventListener('load', scheduleSectionSync);
-    scheduleSectionSync();
+    window.addEventListener('load', () => {
+      onScrollSpy();
+    });
+    // Initial run
+    onScrollSpy();
 
     // Initialize progress bar
     updateChecklistProgress();
