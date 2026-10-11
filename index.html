@@ -1092,6 +1092,130 @@
     footer .gold-text {
       color: var(--gold-accent);
     }
+    .itinerary-map-viewport {
+      cursor: zoom-in;
+    }
+    .itinerary-map-viewport:focus-visible {
+      outline: 3px solid var(--gold-accent);
+      outline-offset: 3px;
+    }
+    .map-click-hint {
+      margin: 8px 2px 0;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      text-align: right;
+    }
+    .map-lightbox {
+      box-sizing: border-box;
+      inset: 0;
+      width: 100vw;
+      max-width: none;
+      height: 100vh;
+      height: 100dvh;
+      max-height: none;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      overflow: hidden;
+      background: #F8FAFC;
+      color: #0C2340;
+    }
+    .map-lightbox[open] {
+      display: flex;
+      flex-direction: column;
+    }
+    .map-lightbox::backdrop {
+      background: rgba(4, 15, 29, 0.92);
+    }
+    .map-lightbox-toolbar {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 14px;
+      background: #0C2340;
+      color: #FFFFFF;
+    }
+    .map-lightbox-title {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    .map-lightbox-tools {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .map-lightbox-zoom-level {
+      min-width: 48px;
+      color: rgba(255,255,255,0.78);
+      font-size: 0.8rem;
+      text-align: center;
+    }
+    .map-lightbox-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 40px;
+      height: 40px;
+      padding: 0 10px;
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
+      color: #FFFFFF;
+      font: inherit;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .map-lightbox-button:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    .map-lightbox-close {
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+    .map-lightbox-viewport {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow: auto;
+      padding: 12px;
+      background: #E8EFF5;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+    }
+    @media (max-width: 480px) {
+      .map-lightbox-toolbar {
+        gap: 8px;
+        padding: 8px;
+      }
+      .map-lightbox-title {
+        font-size: 0.76rem;
+      }
+      .map-lightbox-tools {
+        gap: 4px;
+      }
+      .map-lightbox-button {
+        min-width: 34px;
+        height: 36px;
+        padding: 0 7px;
+      }
+      .map-lightbox-zoom-level {
+        min-width: 36px;
+        font-size: 0.7rem;
+      }
+    }
+    .itinerary-map-svg.map-lightbox-svg {
+      width: var(--map-lightbox-width, 1000px) !important;
+      max-width: none !important;
+      height: auto !important;
+      border-radius: 0 !important;
+      cursor: default;
+    }
 
     /* Mobile Enhancements */
     @media (max-width: 768px) {
@@ -1159,11 +1283,23 @@
       .flight-time {
         margin-top: 0;
       }
+      .flight-day-offset {
+        display: none;
+      }
       .flight-detail-item {
         display: none;
       }
       .specs-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+      footer p:nth-of-type(1) {
+        font-size: 0.75rem !important;
+      }
+      footer p:nth-of-type(2) {
+        font-size: 0.336rem !important;
+      }
+      footer p:nth-of-type(3) {
+        font-size: 0.516rem !important;
       }
     }
   </style>
@@ -1261,7 +1397,7 @@
               <div class="city-code">HEL</div>
               <div class="city-name">赫尔辛基</div>
               <div class="flight-date-mobile">2026/11/08 周日</div>
-              <div class="flight-time">06:00<span style="font-size:0.75rem; color:#EF4444;">+1天</span></div>
+              <div class="flight-time">06:00<span class="flight-day-offset" style="font-size:0.75rem; color:#EF4444;">+1天</span></div>
             </div>
           </div>
           <div class="flight-detail-item">
@@ -1359,7 +1495,7 @@
               <div class="city-code">HEL</div>
               <div class="city-name">赫尔辛基</div>
               <div class="flight-date-mobile">2026/11/15 周日</div>
-              <div class="flight-time">01:45<span style="font-size:0.75rem; color:#EF4444;">+1天</span></div>
+              <div class="flight-time">01:45<span class="flight-day-offset" style="font-size:0.75rem; color:#EF4444;">+1天</span></div>
             </div>
             <div class="flight-arrow">
               <div class="flight-plane-icon">✈</div>
@@ -1408,7 +1544,7 @@
       </div>
 
       <!-- SVG Map Container -->
-      <div style="width:100%; overflow:hidden; border-radius:10px; background:#EBF4FA; border:1px solid #CBD5E1; box-shadow:inset 0 1px 4px rgba(0,0,0,0.04);">
+      <div class="itinerary-map-viewport" role="button" tabindex="0" aria-haspopup="dialog" aria-label="点击打开高清行程地图" title="点击放大查看高清地图" style="width:100%; overflow:hidden; border-radius:10px; background:#EBF4FA; border:1px solid #CBD5E1; box-shadow:inset 0 1px 4px rgba(0,0,0,0.04);">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" class="itinerary-map-svg" style="width:100%; height:auto; display:block; border-radius:12px; font-family:'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <defs>
     <!-- Ocean Background Gradient -->
@@ -1724,7 +1860,22 @@
   </g>
 </svg>
       </div>
+      <p class="map-click-hint">点击地图可放大查看高清细节</p>
     </div>
+
+    <dialog class="map-lightbox" id="mapLightbox" aria-label="冰岛冬季7天6晚行程地图高清查看">
+      <div class="map-lightbox-toolbar">
+        <span class="map-lightbox-title">冰岛冬季7天6晚 · 高清行程地图</span>
+        <div class="map-lightbox-tools">
+          <button class="map-lightbox-button" type="button" data-map-action="fit" aria-label="适配地图">适配</button>
+          <button class="map-lightbox-button" type="button" data-map-action="zoom-out" aria-label="缩小地图">−</button>
+          <span class="map-lightbox-zoom-level" id="mapZoomLevel" aria-live="polite">100%</span>
+          <button class="map-lightbox-button" type="button" data-map-action="zoom-in" aria-label="放大地图">+</button>
+          <button class="map-lightbox-button map-lightbox-close" type="button" data-map-action="close" aria-label="关闭高清地图">×</button>
+        </div>
+      </div>
+      <div class="map-lightbox-viewport" id="mapLightboxViewport"></div>
+    </dialog>
 
 <div class="summary-table-wrap">
       <table class="summary-table">
@@ -3056,6 +3207,90 @@
 
     // Initialize progress bar
     updateChecklistProgress();
+
+    // Open the original vector map in a zoomable lightbox without duplicating its SVG ids.
+    (function initMapLightbox() {
+      const preview = document.querySelector('.itinerary-map-viewport');
+      const mapSvg = preview && preview.querySelector('.itinerary-map-svg');
+      const dialog = document.getElementById('mapLightbox');
+      const viewport = document.getElementById('mapLightboxViewport');
+      const zoomLevel = document.getElementById('mapZoomLevel');
+      if (!preview || !mapSvg || !dialog || !viewport || !zoomLevel) return;
+
+      const sourceWidth = 1000;
+      let currentWidth = sourceWidth;
+      let placeholder = null;
+
+      function fitWidth() {
+        return Math.max(280, Math.min(sourceWidth, viewport.clientWidth - 24));
+      }
+
+      function applyWidth() {
+        mapSvg.style.setProperty('--map-lightbox-width', `${Math.round(currentWidth)}px`);
+        const fit = fitWidth();
+        zoomLevel.textContent = `${Math.round((currentWidth / fit) * 100)}%`;
+      }
+
+      function openMap() {
+        if (dialog.open) return;
+        placeholder = document.createComment('Map preview position');
+        preview.insertBefore(placeholder, mapSvg);
+        viewport.appendChild(mapSvg);
+        mapSvg.classList.add('map-lightbox-svg');
+        dialog.showModal();
+        currentWidth = fitWidth();
+        applyWidth();
+      }
+
+      function restoreMap() {
+        if (placeholder && placeholder.parentNode) {
+          placeholder.parentNode.insertBefore(mapSvg, placeholder);
+          placeholder.remove();
+        }
+        placeholder = null;
+        mapSvg.classList.remove('map-lightbox-svg');
+        mapSvg.style.removeProperty('--map-lightbox-width');
+        preview.focus({ preventScroll: true });
+      }
+
+      preview.addEventListener('click', openMap);
+      preview.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openMap();
+        }
+      });
+
+      dialog.addEventListener('click', (event) => {
+        if (event.target === dialog) {
+          dialog.close();
+          return;
+        }
+        const actionButton = event.target.closest('[data-map-action]');
+        if (!actionButton) return;
+
+        switch (actionButton.dataset.mapAction) {
+          case 'fit':
+            currentWidth = fitWidth();
+            applyWidth();
+            viewport.scrollTo({ left: 0, top: 0 });
+            break;
+          case 'zoom-in':
+            currentWidth = Math.min(3000, currentWidth * 1.35);
+            applyWidth();
+            break;
+          case 'zoom-out':
+            currentWidth = Math.max(280, currentWidth / 1.35);
+            applyWidth();
+            break;
+          case 'close':
+            dialog.close();
+            break;
+        }
+      });
+
+      dialog.addEventListener('close', restoreMap);
+    })();
   </script>
 </body>
 </html>
