@@ -2510,112 +2510,144 @@
     });
 
     // Enhanced Sticky Nav: ScrollSpy & Horizontal Auto-Centering
-    const stickyNav = document.getElementById('stickyNav');
-    const sectionTabs = [...stickyNav.querySelectorAll('.tab-btn[href^=#]')]
-      .map(tab => ({ tab, section: document.getElementById(tab.hash.slice(1)) }))
-      .filter(item => item.section);
+    (function initStickyNav() {
+      const stickyNav = document.getElementById('stickyNav');
+      if (!stickyNav) return;
 
-    let activeTab = null;
-    let isClickScrolling = false;
-    let clickTimeout = null;
+      const tabBtns = Array.from(stickyNav.getElementsByClassName('tab-btn'));
+      const sectionTabs = tabBtns.map(tab => {
+        const href = tab.getAttribute('href') || '';
+        const targetId = href.startsWith('#') ? href.slice(1) : '';
+        const section = targetId ? document.getElementById(targetId) : null;
+        return { tab, section, id: targetId };
+      }).filter(item => item.section);
 
-    // Smoothly scroll the horizontal navbar container to keep active tab centered
-    function centerTabInNav(tab) {
-      if (!stickyNav || !tab) return;
-      const navWidth = stickyNav.clientWidth;
-      const maxScroll = stickyNav.scrollWidth - navWidth;
-      if (maxScroll <= 0) return; // Navbar width fits screen without scrolling
-
-      const navRect = stickyNav.getBoundingClientRect();
-      const tabRect = tab.getBoundingClientRect();
-      // Relative center of the tab within stickyNav's viewport
-      const tabCenterInNav = (tabRect.left - navRect.left) + (tabRect.width / 2);
-      const targetScrollLeft = stickyNav.scrollLeft + (tabCenterInNav - navWidth / 2);
-      const clampedScrollLeft = Math.max(0, Math.min(targetScrollLeft, maxScroll));
-
-      stickyNav.scrollTo({
-        left: clampedScrollLeft,
-        behavior: 'smooth'
-      });
-    }
-
-    function setActiveTab(tab, shouldCenter = true) {
-      if (!tab) return;
-      if (activeTab === tab) {
-        if (shouldCenter) centerTabInNav(tab);
-        return;
-      }
-      activeTab = tab;
-      sectionTabs.forEach(item => {
-        item.tab.classList.toggle('active', item.tab === tab);
-      });
-      if (shouldCenter) {
-        centerTabInNav(tab);
-      }
-    }
-
-    // Determine current active section on vertical scroll
-    function onScrollSpy() {
-      if (isClickScrolling) return;
       if (!sectionTabs.length) return;
 
-      // When reaching near the bottom of page, activate the last tab (Checklist)
-      const scrollBottom = window.innerHeight + window.scrollY;
-      const docHeight = document.documentElement.scrollHeight;
-      if (scrollBottom >= docHeight - 80) {
-        setActiveTab(sectionTabs[sectionTabs.length - 1].tab);
-        return;
-      }
+      let activeTab = null;
+      let isUserClicking = false;
+      let clickTimer = null;
 
-      // Calculate trigger line just below the sticky nav bar
-      const navBottom = stickyNav ? stickyNav.getBoundingClientRect().bottom : 100;
-      const triggerLine = navBottom + 60; // 60px lookahead buffer
+      // Smoothly scroll the horizontal navbar so the active tab is centered
+      function centerActiveTab(tab) {
+        if (!stickyNav || !tab) return;
+        const navWidth = stickyNav.clientWidth;
+        const maxScroll = stickyNav.scrollWidth - navWidth;
+        if (maxScroll <= 0) return; // All tabs fit within screen width
 
-      let currentActive = sectionTabs[0].tab;
-      for (let i = 0; i < sectionTabs.length; i++) {
-        const rect = sectionTabs[i].section.getBoundingClientRect();
-        if (rect.top <= triggerLine) {
-          currentActive = sectionTabs[i].tab;
-        } else {
-          break;
+        // Tab offset relative to stickyNav
+        const navRect = stickyNav.getBoundingClientRect();
+        const tabRect = tab.getBoundingClientRect();
+
+        // Distance from left edge of visible navbar to center of tab
+        const tabCenterInViewport = (tabRect.left - navRect.left) + (tabRect.width / 2);
+        // Adjustment needed to move tab center to the exact middle of the navbar
+        const offset = tabCenterInViewport - (navWidth / 2);
+        const targetScrollLeft = stickyNav.scrollLeft + offset;
+        const clampedScrollLeft = Math.max(0, Math.min(targetScrollLeft, maxScroll));
+
+        // Use smooth scrolling on the sticky navigation bar
+        try {
+          stickyNav.scrollTo({
+            left: clampedScrollLeft,
+            behavior: 'smooth'
+          });
+        } catch (e) {
+          stickyNav.scrollLeft = clampedScrollLeft;
         }
       }
-      setActiveTab(currentActive);
-    }
 
-    let scrollRaf = null;
-    function scheduleScrollSpy() {
-      if (!scrollRaf) {
-        scrollRaf = requestAnimationFrame(() => {
-          onScrollSpy();
-          scrollRaf = null;
+      function updateActiveTab(tab, forceCenter) {
+        if (!tab) return;
+        const hasChanged = (activeTab !== tab);
+        activeTab = tab;
+
+        // Toggle active class on all tabs
+        sectionTabs.forEach(item => {
+          if (item.tab === tab) {
+            item.tab.classList.add('active');
+          } else {
+            item.tab.classList.remove('active');
+          }
         });
+
+        // Horizontally center the tab if changed or explicitly forced
+        if (hasChanged || forceCenter) {
+          centerActiveTab(tab);
+        }
       }
-    }
 
-    // Tab click handler: smooth scroll page to anchor and center clicked tab
-    sectionTabs.forEach(({ tab, section }) => {
-      tab.addEventListener('click', (e) => {
-        isClickScrolling = true;
-        clearTimeout(clickTimeout);
-        setActiveTab(tab, true);
-        // Unlock scrollspy after the browser smooth scroll animation finishes
-        clickTimeout = setTimeout(() => {
-          isClickScrolling = false;
-          onScrollSpy();
-        }, 850);
+      // Vertical ScrollSpy detection
+      function onVerticalScroll() {
+        if (isUserClicking) return;
+
+        // When scrolled to the very top (Hero section), highlight first tab
+        if (window.scrollY < 200) {
+          updateActiveTab(sectionTabs[0].tab);
+          return;
+        }
+
+        // When scrolled to near the bottom of page, highlight the last tab
+        const scrollBottom = window.innerHeight + window.scrollY;
+        const docHeight = document.documentElement.scrollHeight;
+        if (scrollBottom >= docHeight - 80) {
+          updateActiveTab(sectionTabs[sectionTabs.length - 1].tab);
+          return;
+        }
+
+        // Trigger line: just below the sticky navigation bar
+        const navBottom = stickyNav.getBoundingClientRect().bottom || 103;
+        const triggerY = navBottom + 50;
+
+        let currentActiveItem = sectionTabs[0];
+        for (let i = 0; i < sectionTabs.length; i++) {
+          const rect = sectionTabs[i].section.getBoundingClientRect();
+          if (rect.top <= triggerY) {
+            currentActiveItem = sectionTabs[i];
+          } else {
+            break;
+          }
+        }
+        updateActiveTab(currentActiveItem.tab);
+      }
+
+      let ticking = false;
+      function handleScroll() {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            onVerticalScroll();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }
+
+      // Click on any navigation tab
+      sectionTabs.forEach(({ tab, section }) => {
+        tab.addEventListener('click', (e) => {
+          isUserClicking = true;
+          clearTimeout(clickTimer);
+          updateActiveTab(tab, true);
+
+          // Allow the browser's vertical scroll to finish, then resume scrollspy
+          clickTimer = setTimeout(() => {
+            isUserClicking = false;
+            onVerticalScroll();
+          }, 900);
+        });
       });
-    });
 
-    window.addEventListener('scroll', scheduleScrollSpy, { passive: true });
-    window.addEventListener('resize', () => {
-      centerTabInNav(activeTab);
-    });
-    window.addEventListener('load', () => {
-      onScrollSpy();
-    });
-    // Initial run
-    onScrollSpy();
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      window.addEventListener('resize', () => {
+        if (activeTab) centerActiveTab(activeTab);
+      });
+
+      // Initial execution
+      setTimeout(() => {
+        onVerticalScroll();
+        if (activeTab) centerActiveTab(activeTab);
+      }, 100);
+    })();
 
     // Initialize progress bar
     updateChecklistProgress();
