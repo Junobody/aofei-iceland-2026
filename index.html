@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-  <title>冰岛冬季南岸落地7天6晚 · 出行通知书 | 广东奥维信息科技有限公司 尊享定制</title>
+  <title>冰岛冬季南岸落地7天6晚 | TERRASIGHT TRAVEL</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -107,7 +107,7 @@
       border-radius: 4px;
     }
     .brand-title {
-      font-family: -apple-system, BlinkMacSystemFont, "Plus Jakarta Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-family: "Playfair Display", "Songti SC", Garamond, Georgia, serif;
       font-size: 1.25rem;
       letter-spacing: 0.02em;
       color: var(--primary-navy);
@@ -1147,7 +1147,7 @@
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="hero-container">
-      <h1 class="hero-title">冰岛冬季南岸落地7天6晚 · 出行通知书</h1>
+      <h1 class="hero-title">冰岛冬季南岸落地7天6晚</h1>
       <p class="hero-subtitle">极地冰火之歌 · 瓦特纳冰川水晶蓝冰洞 · 斯奈山魔幻秘境 · 欧若拉极光探索之旅</p>
 
       <!-- Key Quick Specs -->
@@ -1342,7 +1342,334 @@
       <h2 class="section-title">行程简要</h2>
     </div>
 
-    <div class="summary-table-wrap">
+    
+    <!-- Section 2 Map: Itinerary at a Glance Map -->
+    <div class="itinerary-map-card" style="background:#FFFFFF; border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:24px 20px; margin-bottom:32px; box-shadow:0 4px 18px rgba(12,35,64,0.06);">
+                  <div style="margin-bottom:18px; border-bottom:1px solid #E2E8F0; padding-bottom:16px;">
+        <span style="display:inline-block; font-family:'Cinzel', serif; font-size:0.75rem; letter-spacing:0.12em; color:#C5A059; font-weight:700; background:#FDF8E8; padding:3px 10px; border-radius:20px; border:1px solid #F3E4B5; margin-bottom:8px;">EXPLORATION ROUTE MAP</span>
+        <h3 style="font-family:'Cinzel', serif; font-size:1.35rem; color:#0C2340; margin:0; letter-spacing:0.04em;">冰岛冬季7天6晚 · 行程地图</h3>
+      </div>
+
+      <!-- SVG Map Container -->
+      <div style="width:100%; overflow:hidden; border-radius:10px; background:#EBF4FA; border:1px solid #CBD5E1; box-shadow:inset 0 1px 4px rgba(0,0,0,0.04);">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" class="itinerary-map-svg" style="width:100%; height:auto; display:block; border-radius:12px; font-family:'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <!-- Ocean Background Gradient -->
+    <linearGradient id="oceanGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EBF4FA"></stop>
+      <stop offset="50%" stop-color="#DEEDF7"></stop>
+      <stop offset="100%" stop-color="#CFE2F0"></stop>
+    </linearGradient>
+
+    <!-- Landmass Gradient & Filter -->
+    <linearGradient id="landGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F9FBF9"></stop>
+      <stop offset="50%" stop-color="#F2F6F3"></stop>
+      <stop offset="100%" stop-color="#E8EFEA"></stop>
+    </linearGradient>
+
+    <!-- Glacier Shimmer Gradient -->
+    <linearGradient id="glacierGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"></stop>
+      <stop offset="100%" stop-color="#DDF0F8" stop-opacity="0.90"></stop>
+    </linearGradient>
+
+    <!-- Tour Route Glow -->
+    <filter id="routeGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"></feGaussianBlur>
+      <feMerge>
+        <feMergeNode in="blur"></feMergeNode>
+        <feMergeNode in="SourceGraphic"></feMergeNode>
+      </feMerge>
+    </filter>
+
+    <!-- Soft Drop Shadow for Cards & Badges -->
+    <filter id="badgeShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#0F172A" flood-opacity="0.18"></feDropShadow>
+    </filter>
+
+    <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0C2340" flood-opacity="0.12"></feDropShadow>
+    </filter>
+  </defs>
+
+  <!-- 1. OCEAN BASE -->
+  <rect width="1000" height="800" fill="url(#oceanGradient)" rx="12"></rect>
+
+  <!-- 2. GEOGRAPHIC GRATICULES (LAT/LON) -->
+  <g stroke="#94A3B8" stroke-width="0.8" stroke-opacity="0.4" fill="none">
+    <path d="M 69.6,600.2 C 128.3,600.2 310.8,600.2 421.7,600.2 C 532.6,600.2 650.0,600.2 734.8,600.2 C 819.6,600.2 897.8,600.2 930.4,600.2" stroke-dasharray="3,4"></path>
+    <path d="M 69.6,415.0 C 128.3,415.0 310.8,415.0 421.7,415.0 C 532.6,415.0 650.0,415.0 734.8,415.0 C 819.6,415.0 897.8,415.0 930.4,415.0" stroke-dasharray="3,4"></path>
+    <path d="M 69.6,229.8 C 128.3,229.8 310.8,229.8 421.7,229.8 C 532.6,229.8 650.0,229.8 734.8,229.8 C 819.6,229.8 897.8,229.8 930.4,229.8" stroke-dasharray="3,4"></path>
+    <path d="M 69.6,128.0 C 128.3,128.0 310.8,128.0 421.7,128.0 C 532.6,128.0 650.0,128.0 734.8,128.0 C 819.6,128.0 897.8,128.0 930.4,128.0" stroke="#64748B" stroke-width="1.2" stroke-dasharray="5,4" stroke-opacity="0.6"></path>
+    <path d="M 265.2,729.8 C 265.2,692.8 265.2,575.5 265.2,507.6 C 265.2,439.7 265.2,390.3 265.2,322.4 C 265.2,254.5 265.2,137.2 265.2,100.2" stroke-dasharray="3,4"></path>
+    <path d="M 578.3,729.8 C 578.3,692.8 578.3,575.5 578.3,507.6 C 578.3,439.7 578.3,390.3 578.3,322.4 C 578.3,254.5 578.3,137.2 578.3,100.2" stroke-dasharray="3,4"></path>
+    <path d="M 891.3,729.8 C 891.3,692.8 891.3,575.5 891.3,507.6 C 891.3,439.7 891.3,390.3 891.3,322.4 C 891.3,254.5 891.3,137.2 891.3,100.2" stroke-dasharray="3,4"></path>
+  </g>
+
+  <!-- Graticule Labels -->
+  <g font-size="10" fill="#64748B" font-family="'Cinzel', serif" font-weight="600" opacity="0.85">
+    <text x="940" y="582" text-anchor="end">64° N</text>
+    <text x="940" y="405" text-anchor="end">65° N</text>
+    <text x="940" y="230" text-anchor="end">66° N</text>
+    <text x="940" y="132" text-anchor="end" fill="#0C2340">北极圈 Arctic Circle 66°33′ N</text>
+    <text x="278" y="780" text-anchor="middle">22° W</text>
+    <text x="590" y="780" text-anchor="middle">18° W</text>
+    <text x="898" y="780" text-anchor="middle">14° W</text>
+  </g>
+
+  <!-- 3. ICELAND LANDMASS -->
+  <!-- Outer coastal shadow/contour -->
+  <path d="M 210.4,635.4 C 211.1,634.8 214.3,635.1 214.3,631.7 C 214.3,628.3 211.3,621.5 210.4,615.0 C 209.5,608.5 208.2,597.7 208.9,592.8 C 209.6,587.9 211.4,586.0 214.3,585.4 C 217.2,584.8 224.9,586.6 226.1,589.1 C 227.3,591.6 219.8,597.7 221.4,600.2 C 223.0,602.7 231.4,604.5 235.5,603.9 C 239.6,603.3 240.5,599.3 245.7,596.5 C 250.9,593.7 263.8,591.2 266.8,587.2 C 269.8,583.2 263.1,575.2 263.7,572.4 C 264.3,569.6 268.5,571.5 270.7,570.6 C 272.9,569.7 275.3,569.3 277.0,566.8 C 278.7,564.3 279.6,559.4 280.9,555.7 C 282.2,552.0 280.9,548.0 284.8,544.6 C 288.7,541.2 299.7,537.9 304.3,535.4 C 308.9,532.9 314.1,530.1 312.2,529.8 C 310.2,529.5 301.5,531.3 292.6,533.5 C 283.7,535.7 264.2,542.5 259.0,542.8 C 253.8,543.1 260.3,539.7 261.3,535.4 C 262.3,531.1 265.2,522.4 265.2,516.8 C 265.2,511.2 260.0,505.1 261.3,502.0 C 262.6,498.9 274.3,502.0 273.0,498.3 C 271.7,494.6 260.0,485.0 253.5,479.8 C 247.0,474.6 241.1,470.9 233.9,466.9 C 226.7,462.9 218.2,458.2 210.4,455.7 C 202.6,453.2 195.9,453.2 187.0,452.0 C 178.1,450.8 165.4,447.4 157.2,448.3 C 149.0,449.2 141.9,455.1 137.7,457.6 C 133.5,460.1 134.4,461.6 132.2,463.1 C 130.0,464.7 127.2,467.2 124.3,466.9 C 121.4,466.6 117.9,464.4 115.0,461.3 C 112.1,458.2 108.8,452.6 107.1,448.3 C 105.4,444.0 103.0,438.5 104.8,435.4 C 106.6,432.3 114.8,430.7 118.1,429.8 C 121.3,428.9 122.0,428.9 124.3,429.8 C 126.6,430.7 125.0,435.7 132.2,435.4 C 139.4,435.1 158.3,430.8 167.4,428.0 C 176.5,425.2 180.5,422.4 187.0,418.7 C 193.5,415.0 198.7,408.8 206.5,405.7 C 214.3,402.6 224.1,402.3 233.9,400.2 C 243.7,398.1 256.7,393.4 265.2,392.8 C 273.7,392.2 286.1,398.4 284.8,396.5 C 283.5,394.6 265.2,386.3 257.4,381.7 C 249.6,377.1 244.3,371.8 237.8,368.7 C 231.3,365.6 217.7,367.7 218.3,363.1 C 219.0,358.5 233.9,346.1 241.7,340.9 C 249.5,335.7 258.7,334.2 265.2,331.7 C 271.7,329.2 284.8,329.2 280.9,326.1 C 277.0,323.0 254.8,316.3 241.7,313.2 C 228.6,310.1 213.8,307.9 202.6,307.6 C 191.4,307.3 183.5,309.5 174.4,311.3 C 165.3,313.1 158.8,316.9 147.8,318.7 C 136.9,320.5 119.1,320.8 108.7,322.4 C 98.3,323.9 92.1,328.0 85.2,328.0 C 78.3,328.0 69.8,324.9 67.2,322.4 C 64.6,319.9 65.3,316.3 69.6,313.2 C 73.9,310.1 85.8,305.4 93.0,303.9 C 100.2,302.3 107.6,305.1 112.6,303.9 C 117.6,302.7 118.9,299.0 122.8,296.5 C 126.7,294.0 129.3,291.6 136.1,289.1 C 142.9,286.6 162.2,283.9 163.5,281.7 C 164.8,279.5 149.1,280.1 143.9,276.1 C 138.7,272.1 131.5,262.2 132.2,257.6 C 132.8,253.0 147.2,253.6 147.8,248.3 C 148.5,243.1 136.1,231.0 136.1,226.1 C 136.1,221.2 146.5,221.8 147.8,218.7 C 149.1,215.6 141.3,210.7 143.9,207.6 C 146.5,204.5 158.3,201.1 163.5,200.2 C 168.7,199.3 172.8,199.5 175.2,202.0 C 177.5,204.5 174.3,211.9 177.6,215.0 C 180.9,218.1 188.7,218.1 194.8,220.6 C 200.9,223.1 207.8,226.7 214.3,229.8 C 220.8,232.9 229.3,240.6 233.9,239.1 C 238.5,237.6 243.0,226.8 241.7,220.6 C 240.4,214.4 235.2,209.7 226.1,202.0 C 217.0,194.3 195.5,182.6 187.0,174.3 C 178.5,166.0 173.9,156.6 175.2,152.0 C 176.5,147.4 185.7,147.7 194.8,146.5 C 203.9,145.3 219.6,142.4 230.0,144.6 C 240.4,146.8 248.9,153.0 257.4,159.5 C 265.9,166.0 275.7,174.9 280.9,183.5 C 286.1,192.1 283.5,203.6 288.7,211.3 C 293.9,219.0 308.9,222.1 312.2,229.8 C 315.5,237.5 308.9,248.3 308.3,257.6 C 307.7,266.9 310.3,279.2 308.3,285.4 C 306.3,291.6 295.9,288.4 296.5,294.6 C 297.1,300.8 306.3,313.1 312.2,322.4 C 318.1,331.7 327.1,342.5 331.7,350.2 C 336.3,357.9 337.0,370.2 339.6,368.7 C 342.2,367.1 344.1,353.2 347.4,340.9 C 350.6,328.5 355.2,305.4 359.1,294.6 C 363.0,283.8 367.0,277.0 370.9,276.1 C 374.8,275.2 378.0,284.5 382.6,289.1 C 387.2,293.7 395.7,306.1 398.3,303.9 C 400.9,301.7 399.6,286.9 398.3,276.1 C 397.0,265.3 387.8,250.5 390.4,239.1 C 393.0,227.7 406.1,207.6 413.9,207.6 C 421.7,207.6 431.5,227.7 437.4,239.1 C 443.3,250.5 443.9,274.6 449.1,276.1 C 454.3,277.6 461.5,257.6 468.7,248.3 C 475.9,239.1 485.7,229.2 492.2,220.6 C 498.7,212.0 501.3,199.6 507.8,196.5 C 514.3,193.4 526.1,196.4 531.3,202.0 C 536.5,207.6 535.2,220.5 539.1,229.8 C 543.0,239.1 549.4,247.7 554.8,257.6 C 560.1,267.5 569.2,287.6 571.2,289.1 C 573.2,290.7 567.3,276.8 566.5,266.9 C 565.7,257.0 567.8,241.2 566.5,229.8 C 565.2,218.4 554.1,201.4 558.7,198.3 C 563.3,195.2 584.1,204.5 593.9,211.3 C 603.7,218.1 611.4,237.6 617.4,239.1 C 623.4,240.6 625.3,227.7 629.9,220.6 C 634.5,213.5 637.8,202.7 644.8,196.5 C 651.8,190.3 663.7,182.6 672.2,183.5 C 680.7,184.4 691.1,203.5 695.7,202.0 C 700.3,200.5 698.3,183.6 699.6,174.3 C 700.9,165.1 699.2,153.9 703.5,146.5 C 707.8,139.1 719.5,129.8 725.4,129.8 C 731.3,129.8 731.9,139.1 738.7,146.5 C 745.5,153.9 756.3,169.7 766.1,174.3 C 775.9,178.9 787.0,175.9 797.4,174.3 C 807.8,172.8 820.0,167.5 828.7,165.0 C 837.4,162.5 851.1,156.4 849.8,159.5 C 848.5,162.6 827.0,173.3 820.9,183.5 C 814.8,193.7 811.7,209.8 813.0,220.6 C 814.3,231.4 823.5,239.1 828.7,248.3 C 833.9,257.6 837.8,268.4 844.3,276.1 C 850.8,283.8 857.3,288.4 867.8,294.6 C 878.2,300.8 899.2,305.5 907.0,313.2 C 914.8,320.9 917.4,331.9 914.8,340.9 C 912.2,349.8 890.0,360.7 891.3,366.9 C 892.6,373.1 916.1,372.4 922.6,378.0 C 929.1,383.6 932.4,395.0 930.4,400.2 C 928.4,405.4 912.8,405.4 910.9,409.4 C 909.0,413.4 919.1,419.7 918.7,424.3 C 918.3,428.9 911.5,433.5 908.5,437.2 C 905.5,440.9 903.8,443.4 900.7,446.5 C 897.6,449.6 894.9,450.4 889.7,455.7 C 884.5,460.9 875.6,470.9 869.4,478.0 C 863.1,485.1 855.1,490.9 852.2,498.3 C 849.3,505.7 854.8,517.8 852.2,522.4 C 849.6,527.0 842.6,520.9 836.5,526.1 C 830.4,531.4 821.9,549.3 815.4,553.9 C 808.9,558.5 806.9,550.8 797.4,553.9 C 787.9,557.0 771.1,565.9 758.3,572.4 C 745.5,578.9 731.1,586.6 720.7,592.8 C 710.3,599.0 703.8,603.5 695.7,609.4 C 687.6,615.3 680.0,623.0 672.2,628.0 C 664.4,633.0 657.8,633.9 648.7,639.1 C 639.6,644.3 629.1,652.0 617.4,659.4 C 605.7,666.8 591.3,677.3 578.3,683.5 C 565.2,689.7 548.2,691.6 539.1,696.5 C 530.0,701.4 530.0,711.2 523.5,713.1 C 517.0,715.0 505.6,707.9 500.0,707.6 C 494.4,707.3 496.3,713.8 489.8,711.3 C 483.3,708.8 472.1,699.0 460.9,692.8 C 449.7,686.6 434.2,680.5 422.5,674.3 C 410.8,668.1 401.0,661.9 390.4,655.7 C 379.8,649.5 368.2,641.5 359.1,637.2 C 350.0,632.9 343.5,631.3 335.7,629.8 C 327.9,628.3 320.7,627.4 312.2,628.0 C 303.7,628.6 293.9,632.6 284.8,633.5 C 275.7,634.4 266.3,634.1 257.4,633.5 C 248.5,632.9 239.4,629.5 231.6,629.8 C 223.8,630.1 213.9,634.5 210.4,635.4 C 206.9,636.3 209.8,636.0 210.4,635.4 Z" fill="url(#landGradient)" stroke="#8EB49F" stroke-width="1.6" filter="url(#cardShadow)"></path>
+
+  <!-- Subtle terrain shading / Central Highlands indicator -->
+  <path d="M 640.9,479.8 C 650.0,476.1 660.5,466.9 672.2,466.9 C 683.9,466.9 698.3,474.6 711.3,479.8 C 724.3,485.0 740.0,489.0 750.4,498.3 C 760.8,507.6 771.9,524.6 773.9,535.4 C 775.9,546.2 770.0,553.9 762.2,563.1 C 754.4,572.4 739.4,584.7 727.0,590.9 C 714.6,597.1 698.9,598.0 687.8,600.2 C 676.7,602.4 670.8,607.6 660.4,603.9 C 650.0,600.2 636.3,587.9 625.2,578.0 C 614.1,568.1 598.5,556.3 593.9,544.6 C 589.3,532.9 593.9,516.9 597.8,507.6 C 601.7,498.4 610.2,493.7 617.4,489.1 C 624.6,484.5 631.8,483.5 640.9,479.8 Z" fill="#E2EBE5" opacity="0.4"></path>
+
+  <!-- 4. GLACIERS (ICE CAPS) -->
+  <!-- Vatnajokull -->
+  <path d="M 640.9,479.8 C 650.0,476.1 660.5,466.9 672.2,466.9 C 683.9,466.9 698.3,474.6 711.3,479.8 C 724.3,485.0 740.0,489.0 750.4,498.3 C 760.8,507.6 771.9,524.6 773.9,535.4 C 775.9,546.2 770.0,553.9 762.2,563.1 C 754.4,572.4 739.4,584.7 727.0,590.9 C 714.6,597.1 698.9,598.0 687.8,600.2 C 676.7,602.4 670.8,607.6 660.4,603.9 C 650.0,600.2 636.3,587.9 625.2,578.0 C 614.1,568.1 598.5,556.3 593.9,544.6 C 589.3,532.9 593.9,516.9 597.8,507.6 C 601.7,498.4 610.2,493.7 617.4,489.1 C 624.6,484.5 631.8,483.5 640.9,479.8 Z" fill="url(#glacierGradient)" stroke="#A2D0E6" stroke-width="1.4" filter="url(#badgeShadow)"></path>
+  <!-- Langjokull -->
+  <path d="M 390.4,442.8 C 396.9,436.0 404.8,428.3 413.9,429.8 C 423.0,431.3 442.6,440.6 445.2,452.0 C 447.8,463.4 436.8,487.5 429.6,498.3 C 422.4,509.1 412.0,515.2 402.2,516.8 C 392.4,518.3 375.5,515.3 370.9,507.6 C 366.3,499.9 371.6,481.4 374.8,470.6 C 378.1,459.8 383.9,449.6 390.4,442.8 Z" fill="url(#glacierGradient)" stroke="#A2D0E6" stroke-width="1.2"></path>
+  <!-- Hofsjokull -->
+  <path d="M 507.8,424.3 C 516.3,423.1 530.0,423.6 535.2,429.8 C 540.4,436.0 543.0,453.0 539.1,461.3 C 535.2,469.6 521.5,478.2 511.7,479.8 C 501.9,481.4 485.0,477.7 480.4,470.6 C 475.8,463.5 479.7,444.9 484.3,437.2 C 488.9,429.5 499.3,425.5 507.8,424.3 Z" fill="url(#glacierGradient)" stroke="#A2D0E6" stroke-width="1.2"></path>
+  <!-- Myrdalsjokull -->
+  <path d="M 488.3,646.5 C 496.8,645.3 511.8,646.8 515.7,652.0 C 519.6,657.2 516.9,672.8 511.7,678.0 C 506.5,683.2 493.4,684.1 484.3,683.5 C 475.2,682.9 460.2,678.3 457.0,674.3 C 453.8,670.3 459.6,664.0 464.8,659.4 C 470.0,654.8 479.8,647.7 488.3,646.5 Z" fill="url(#glacierGradient)" stroke="#A2D0E6" stroke-width="1.2"></path>
+  <!-- Snaefellsjokull -->
+  <path d="M 122.8,446.5 C 124.1,444.6 129.3,444.6 130.6,446.5 C 131.9,448.4 131.9,455.8 130.6,457.6 C 129.3,459.5 124.1,459.5 122.8,457.6 C 121.5,455.8 121.5,448.4 122.8,446.5 Z" fill="url(#glacierGradient)" stroke="#A2D0E6" stroke-width="1.0"></path>
+
+  <!-- Glacier Text Labels -->
+  <g font-size="10.5" font-family="'Cinzel', serif" font-weight="700" fill="#1E4D68" text-anchor="middle" letter-spacing="0.05em">
+    <text x="668.3" y="526.1">VATNAJÖKULL</text>
+    <text x="668.3" y="538.1" font-size="8.5" fill="#4B7791" font-family="system-ui">瓦特纳冰原 (欧洲最大冰盖)</text>
+    <text x="410.0" y="474.3">LANGJÖKULL</text>
+    <text x="511.7" y="448.3">HOFSJÖKULL</text>
+    <text x="492.2" y="661.0">MÝRDALSJÖKULL</text>
+    <text x="108.7" y="444.0">SNÆFELLSJÖKULL</text>
+  </g>
+
+  <!-- 5. REGIONAL OVERVIEW LABELS -->
+  <g font-family="'Cinzel', serif" font-weight="700" letter-spacing="0.1em" opacity="0.55">
+    <text id="txt_reg_west_en" x="145" y="240" font-size="12" fill="#334155" text-anchor="middle">VESTFIRÐIR</text>
+    <text id="txt_reg_west_zh" x="145" y="254" font-size="9" fill="#64748B" text-anchor="middle" font-family="system-ui">西峡湾区域</text>
+
+    <text id="txt_reg_north_en" x="615" y="260" font-size="13" fill="#334155" text-anchor="middle">NORTH ICELAND</text>
+    <text id="txt_reg_north_zh" x="615" y="275" font-size="9.5" fill="#64748B" text-anchor="middle" font-family="system-ui">北部高地与峡湾</text>
+
+    <text id="txt_reg_east_en" x="850" y="340" font-size="12" fill="#334155" text-anchor="middle">AUSTFIRÐIR</text>
+    <text id="txt_reg_east_zh" x="850" y="354" font-size="9" fill="#64748B" text-anchor="middle" font-family="system-ui">东部峡湾</text>
+
+    <text id="txt_reg_high_en" x="500" y="470" font-size="11" fill="#475569" text-anchor="middle">HÁLENDIÐ</text>
+    <text id="txt_reg_high_zh" x="500" y="484" font-size="8.5" fill="#64748B" text-anchor="middle" font-family="system-ui">内陆高地</text>
+  </g>
+
+  <!-- 6. HIGHWAY NETWORKS -->
+  <!-- National Ring Road 1 -->
+  <path d="M 271.5,574.3 C 273.7,569.0 280.0,550.8 284.8,542.8 C 289.6,534.8 302.6,533.2 300.4,526.1 C 298.2,519.0 271.5,511.6 271.5,500.2 C 271.5,488.8 289.7,473.4 300.4,457.6 C 311.1,441.9 328.5,420.5 335.7,405.7 C 342.9,390.9 337.0,379.5 343.5,368.7 C 350.0,357.9 365.4,353.5 374.8,340.9 C 384.2,328.2 382.9,297.4 399.8,292.8 C 416.8,288.2 453.3,309.8 476.5,313.2 C 499.7,316.6 523.3,317.2 539.1,313.2 C 554.9,309.2 558.8,293.1 571.2,289.1 C 583.6,285.1 598.1,287.9 613.5,289.1 C 628.9,290.3 642.1,294.0 663.6,296.5 C 685.1,299.0 709.9,292.2 742.6,303.9 C 775.3,315.6 837.8,349.3 860.0,366.9 C 882.2,384.5 870.5,397.7 875.7,409.4 C 880.9,421.1 889.0,429.5 891.3,437.2 C 893.6,444.9 893.4,448.9 889.7,455.7 C 886.1,462.5 875.6,467.8 869.4,478.0 C 863.1,488.2 864.2,504.1 852.2,516.8 C 840.2,529.4 819.3,541.2 797.4,553.9 C 775.5,566.6 743.8,585.4 720.7,592.8 C 697.6,600.2 677.2,594.3 658.9,598.3 C 640.6,602.3 625.2,610.0 611.1,616.8 C 597.0,623.6 587.6,626.4 574.3,639.1 C 561.0,651.8 543.7,681.4 531.3,692.8 C 518.9,704.2 511.9,708.5 500.0,707.6 C 488.1,706.7 473.0,693.1 460.1,687.2 C 447.2,681.3 434.1,680.1 422.5,672.4 C 410.9,664.7 399.0,647.7 390.4,640.9 C 381.8,634.1 378.6,636.3 370.9,631.7 C 363.2,627.1 351.4,618.4 344.3,613.1 C 337.2,607.9 335.3,604.8 328.6,600.2 C 321.9,595.6 313.8,589.7 304.3,585.4 C 294.8,581.1 277.0,576.1 271.5,574.3 C 266.0,572.4 269.3,579.5 271.5,574.3 Z" fill="none" stroke="#64748B" stroke-width="2.2" stroke-dasharray="6,5" stroke-linecap="round" opacity="0.75"></path>
+
+  <!-- 7-Day Tour Exclusive Trajectory (Double-layered glow & core) -->
+  <!-- Outer Glow -->
+  <path d="M 217.5,602.0 C 222.8,600.1 240.9,595.8 249.6,590.9 C 258.3,586.0 262.7,581.6 269.9,572.4 C 277.1,563.1 292.3,547.4 292.6,535.4 C 292.9,523.4 294.1,514.7 271.5,500.2 C 248.9,485.7 179.5,455.4 157.2,448.3 C 134.9,441.2 136.0,460.7 137.7,457.6 C 139.4,454.5 156.6,436.3 167.4,429.8 C 178.2,423.3 180.4,414.1 202.6,418.7 C 224.8,423.3 280.8,444.3 300.4,457.6 C 320.0,470.9 314.5,482.6 320.0,498.3 C 325.5,514.0 323.1,543.0 333.3,552.0 C 343.5,561.0 370.2,553.5 381.0,552.0 C 391.8,550.5 393.1,544.9 398.3,542.8 C 403.5,540.6 420.0,530.8 412.3,539.1 C 404.6,547.4 363.6,580.5 352.1,592.8 C 340.6,605.1 331.8,599.8 343.5,613.1 C 355.2,626.4 403.1,660.0 422.5,672.4 C 441.9,684.8 448.9,680.7 460.1,687.2 C 471.3,693.7 483.8,707.3 489.8,711.3 C 495.8,715.3 494.5,711.9 496.1,711.3 C 497.7,710.7 479.0,716.2 499.2,707.6 C 519.4,699.0 598.8,674.5 617.4,659.4 C 636.0,644.3 604.2,627.0 611.1,616.8 C 618.0,606.6 640.6,602.3 658.9,598.3 C 677.2,594.3 728.7,589.7 720.7,592.8 C 712.7,595.9 637.1,608.5 611.1,616.8 C 585.1,625.1 583.6,627.7 565.0,642.8 C 546.4,657.9 536.1,712.5 499.2,707.6 C 462.3,702.7 388.4,627.3 343.5,613.1 C 298.6,598.9 251.0,624.2 230.0,622.4 C 209.0,620.5 219.6,605.4 217.5,602.0" fill="none" stroke="#D4AF37" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.32" filter="url(#routeGlow)"></path>
+  <!-- Core Golden Line -->
+  <path d="M 217.5,602.0 C 222.8,600.1 240.9,595.8 249.6,590.9 C 258.3,586.0 262.7,581.6 269.9,572.4 C 277.1,563.1 292.3,547.4 292.6,535.4 C 292.9,523.4 294.1,514.7 271.5,500.2 C 248.9,485.7 179.5,455.4 157.2,448.3 C 134.9,441.2 136.0,460.7 137.7,457.6 C 139.4,454.5 156.6,436.3 167.4,429.8 C 178.2,423.3 180.4,414.1 202.6,418.7 C 224.8,423.3 280.8,444.3 300.4,457.6 C 320.0,470.9 314.5,482.6 320.0,498.3 C 325.5,514.0 323.1,543.0 333.3,552.0 C 343.5,561.0 370.2,553.5 381.0,552.0 C 391.8,550.5 393.1,544.9 398.3,542.8 C 403.5,540.6 420.0,530.8 412.3,539.1 C 404.6,547.4 363.6,580.5 352.1,592.8 C 340.6,605.1 331.8,599.8 343.5,613.1 C 355.2,626.4 403.1,660.0 422.5,672.4 C 441.9,684.8 448.9,680.7 460.1,687.2 C 471.3,693.7 483.8,707.3 489.8,711.3 C 495.8,715.3 494.5,711.9 496.1,711.3 C 497.7,710.7 479.0,716.2 499.2,707.6 C 519.4,699.0 598.8,674.5 617.4,659.4 C 636.0,644.3 604.2,627.0 611.1,616.8 C 618.0,606.6 640.6,602.3 658.9,598.3 C 677.2,594.3 728.7,589.7 720.7,592.8 C 712.7,595.9 637.1,608.5 611.1,616.8 C 585.1,625.1 583.6,627.7 565.0,642.8 C 546.4,657.9 536.1,712.5 499.2,707.6 C 462.3,702.7 388.4,627.3 343.5,613.1 C 298.6,598.9 251.0,624.2 230.0,622.4 C 209.0,620.5 219.6,605.4 217.5,602.0" fill="none" stroke="#C5A059" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"></path>
+  <!-- Inner White Highlight -->
+  <path d="M 217.5,602.0 C 222.8,600.1 240.9,595.8 249.6,590.9 C 258.3,586.0 262.7,581.6 269.9,572.4 C 277.1,563.1 292.3,547.4 292.6,535.4 C 292.9,523.4 294.1,514.7 271.5,500.2 C 248.9,485.7 179.5,455.4 157.2,448.3 C 134.9,441.2 136.0,460.7 137.7,457.6 C 139.4,454.5 156.6,436.3 167.4,429.8 C 178.2,423.3 180.4,414.1 202.6,418.7 C 224.8,423.3 280.8,444.3 300.4,457.6 C 320.0,470.9 314.5,482.6 320.0,498.3 C 325.5,514.0 323.1,543.0 333.3,552.0 C 343.5,561.0 370.2,553.5 381.0,552.0 C 391.8,550.5 393.1,544.9 398.3,542.8 C 403.5,540.6 420.0,530.8 412.3,539.1 C 404.6,547.4 363.6,580.5 352.1,592.8 C 340.6,605.1 331.8,599.8 343.5,613.1 C 355.2,626.4 403.1,660.0 422.5,672.4 C 441.9,684.8 448.9,680.7 460.1,687.2 C 471.3,693.7 483.8,707.3 489.8,711.3 C 495.8,715.3 494.5,711.9 496.1,711.3 C 497.7,710.7 479.0,716.2 499.2,707.6 C 519.4,699.0 598.8,674.5 617.4,659.4 C 636.0,644.3 604.2,627.0 611.1,616.8 C 618.0,606.6 640.6,602.3 658.9,598.3 C 677.2,594.3 728.7,589.7 720.7,592.8 C 712.7,595.9 637.1,608.5 611.1,616.8 C 585.1,625.1 583.6,627.7 565.0,642.8 C 546.4,657.9 536.1,712.5 499.2,707.6 C 462.3,702.7 388.4,627.3 343.5,613.1 C 298.6,598.9 251.0,624.2 230.0,622.4 C 209.0,620.5 219.6,605.4 217.5,602.0" fill="none" stroke="#FFFDF5" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8,8" opacity="0.9"></path>
+
+  <!-- 7. REFERENCE CITIES ON RING ROAD -->
+  <g font-size="9.5" fill="#475569" font-family="system-ui">
+    <!-- Akureyri -->
+    <circle cx="571.2" cy="288.5" r="3" fill="#64748B"></circle>
+    <text x="577.2" y="291.5">阿克雷里 Akureyri</text>
+    <!-- Egilsstadir -->
+    <circle cx="860.0" cy="366.9" r="3" fill="#64748B"></circle>
+    <text x="866.0" y="369.9">埃伊尔斯塔济 Egilsstaðir</text>
+    <!-- Isafjordur -->
+    <circle cx="177.2" cy="215.9" r="3" fill="#64748B"></circle>
+    <text x="183.2" y="218.9">伊萨菲厄泽 Ísafjörður</text>
+  </g>
+
+  <!-- 8. WAYPOINT BADGES & STOP ANNOTATIONS (7-DAY ITINERARY) -->
+
+  <!-- D2: KEF Airport -->
+  <g transform="translate(217.9, 603.0)" filter="url(#badgeShadow)">
+    <circle cx="0" cy="0" r="10" fill="#0C2340" stroke="#C5A059" stroke-width="2"></circle>
+    <text x="0" y="3.5" font-size="9" fill="#FFFFFF" font-weight="bold" text-anchor="middle">✈</text>
+    <rect x="-85" y="-32" width="80" height="24" rx="4" fill="#0C2340" fill-opacity="0.92"></rect>
+    <text id="txt_d2_kef_title" x="-45" y="-20" font-size="9" fill="#FDE68A" font-weight="bold" text-anchor="middle">D2/D7 凯夫拉维克</text>
+    <text id="txt_d2_kef_sub" x="-45" y="-10" font-size="7.5" fill="#E2E8F0" text-anchor="middle">KEF 国际机场</text>
+  </g>
+
+  <!-- D2: Reykjavik Capital -->
+  <g transform="translate(269.8, 573.1)" filter="url(#badgeShadow)">
+    <circle cx="0" cy="0" r="13" fill="#0C2340" stroke="#C5A059" stroke-width="2.2"></circle>
+    <text x="0" y="4.5" font-size="11" fill="#FFFFFF" font-family="'Cinzel', serif" font-weight="bold" text-anchor="middle">D2</text>
+    <rect x="18" y="-16" width="115" height="34" rx="5" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"></rect>
+    <text id="txt_d2_reyk_title" x="24" y="-3" font-size="10.5" fill="#0C2340" font-weight="bold">雷克雅未克</text>
+    <text id="txt_d2_hotel" x="24" y="11" font-size="8.5" fill="#C5A059">🏨 Center Hotel Arnarhvoll</text>
+  </g>
+
+  <!-- D3: Snaefellsnes Peninsula -->
+  <g transform="translate(167.2, 428.5)" filter="url(#badgeShadow)">
+    <circle cx="0" cy="0" r="13" fill="#0C2340" stroke="#C5A059" stroke-width="2.2"></circle>
+    <text x="0" y="4.5" font-size="11" fill="#FFFFFF" font-family="'Cinzel', serif" font-weight="bold" text-anchor="middle">D3</text>
+    <rect x="-140" y="-38" width="130" height="42" rx="5" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"></rect>
+    <text id="txt_d3_title" x="-134" y="-24" font-size="10.5" fill="#0C2340" font-weight="bold">斯奈山半岛</text>
+    <text id="txt_d3_sub1" x="-134" y="-11" font-size="8.5" fill="#475569">草帽山 · 阿尔纳斯塔皮</text>
+    <text id="txt_d3_sub2" x="-134" y="0" font-size="8.5" fill="#475569">黑教堂</text>
+  </g>
+
+  <!-- D3 Night: Bifrost Hotel -->
+  <g transform="translate(300.4, 458.3)" filter="url(#badgeShadow)">
+    <circle cx="0" cy="0" r="8" fill="#C5A059" stroke="#0C2340" stroke-width="1.8"></circle>
+    <text x="0" y="3" font-size="7.5" fill="#0C2340" font-weight="bold" text-anchor="middle">🏨</text>
+    <rect x="12" y="-14" width="95" height="26" rx="4" fill="#0C2340" fill-opacity="0.92"></rect>
+    <text id="txt_d3_bifrost_title" x="18" y="-2" font-size="9" fill="#FDE68A" font-weight="bold">D3 宿 毕弗罗斯特</text>
+    <text id="txt_d3_hotel" x="18" y="8" font-size="7.5" fill="#E2E8F0">Hótel Bifröst</text>
+  </g>
+
+  <!-- D4: Golden Circle -->
+  <g transform="translate(405.2, 541.3)" filter="url(#badgeShadow)">
+    <circle cx="0" cy="0" r="13" fill="#0C2340" stroke="#C5A059" stroke-width="2.2"></circle>
+    <text x="0" y="4.5" font-size="11" fill="#FFFFFF" font-family="'Cinzel', serif" font-weight="bold" text-anchor="middle">D4</text>
+    <rect x="18" y="-28" width="125" height="42" rx="5" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"></rect>
+    <text id="txt_d4_title" x="24" y="-14" font-size="10.5" fill="#0C2340" font-weight="bold">经典黄金圈</text>
+    <text id="txt_d4_sub1" x="24" y="-1" font-size="8.5" fill="#475569">辛格维利尔 · 秘境瀑布</text>
+    <text id="txt_d4_sub2" x="24" y="10" font-size="8.5" fill="#475569">大间歇泉 · 黄金瀑布 · 火山湖</text>
+  </g>
+
+  <!-- D4 Night: Selfoss Hotel -->
+  <g transform="translate(343.7, 612.6)" filter="url(#badgeShadow)">
+    <circle cx="0" cy="0" r="8" fill="#C5A059" stroke="#0C2340" stroke-width="1.8"></circle>
+    <text x="0" y="3" font-size="7.5" fill="#0C2340" font-weight="bold" text-anchor="middle">🏨</text>
+    <rect x="-115" y="-10" width="105" height="26" rx="4" fill="#0C2340" fill-opacity="0.92"></rect>
+    <text id="txt_d4_selfoss_title" x="-110" y="2" font-size="9" fill="#FDE68A" font-weight="bold">D4 宿 塞尔福斯</text>
+    <text id="txt_d4_hotel" x="-110" y="12" font-size="7.5" fill="#E2E8F0">The Greenhouse Hotel</text>
+  </g>
+
+  <!-- D5: South Coast & Vik -->
+  <g transform="translate(499.5, 708.0)" filter="url(#badgeShadow)">
+    <circle cx="0" cy="0" r="13" fill="#0C2340" stroke="#C5A059" stroke-width="2.2"></circle>
+    <text x="0" y="4.5" font-size="11" fill="#FFFFFF" font-family="'Cinzel', serif" font-weight="bold" text-anchor="middle">D5</text>
+    <rect x="-135" y="16" width="135" height="42" rx="5" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"></rect>
+    <text id="txt_d5_title" x="-130" y="30" font-size="10.5" fill="#0C2340" font-weight="bold">冰岛南岸</text>
+    <text id="txt_d5_sub1" x="-130" y="43" font-size="8.5" fill="#475569">塞里雅兰瀑布 · 斯科加瀑布</text>
+    <text id="txt_d5_sub2" x="-130" y="54" font-size="8.5" fill="#475569">Dyrhólaey岬角 · 黑沙滩</text>
+  </g>
+
+  <!-- D5 & D6 Night: Fosshotel Nupar -->
+  <g transform="translate(611.1, 616.8)" filter="url(#badgeShadow)">
+    <circle cx="0" cy="0" r="9" fill="#C5A059" stroke="#0C2340" stroke-width="2"></circle>
+    <text x="0" y="3.5" font-size="8.5" fill="#0C2340" font-weight="bold" text-anchor="middle">🏨</text>
+    <rect x="-55" y="-36" width="110" height="28" rx="4" fill="#0C2340" fill-opacity="0.94"></rect>
+    <text id="txt_d5_nupar_title" x="0" y="-22" font-size="9" fill="#FDE68A" font-weight="bold" text-anchor="middle">D5-D6 宿 努帕尔 (连住)</text>
+    <text id="txt_d5_hotel" x="0" y="-11" font-size="7.5" fill="#E2E8F0" text-anchor="middle">Fosshotel Núpar </text>
+  </g>
+
+  <!-- D6: Vatnajokull Glacier & Jokulsarlon -->
+  <g transform="translate(720.8, 591.3)" filter="url(#badgeShadow)">
+    <circle cx="0" cy="0" r="13" fill="#0C2340" stroke="#C5A059" stroke-width="2.2"></circle>
+    <text x="0" y="4.5" font-size="11" fill="#FFFFFF" font-family="'Cinzel', serif" font-weight="bold" text-anchor="middle">D6</text>
+    <rect x="18" y="-18" width="135" height="42" rx="5" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"></rect>
+    <text id="txt_d6_title" x="24" y="-4" font-size="10.5" fill="#0C2340" font-weight="bold">瓦特纳冰川探险</text>
+    <text id="txt_d6_sub1" x="24" y="9" font-size="8.5" fill="#475569">超级吉普蓝冰洞探秘</text>
+    <text id="txt_d6_sub2" x="24" y="20" font-size="8.5" fill="#475569">杰古沙龙冰河湖 · 钻石沙滩</text>
+  </g>
+
+  <!-- D7: Blue Lagoon -->
+  <g transform="translate(230.1, 622.4)" filter="url(#badgeShadow)">
+    <circle cx="0" cy="0" r="12" fill="#0C2340" stroke="#C5A059" stroke-width="2"></circle>
+    <text x="0" y="4" font-size="10" fill="#FFFFFF" font-family="'Cinzel', serif" font-weight="bold" text-anchor="middle">D7</text>
+    <rect x="-135" y="14" width="130" height="30" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"></rect>
+    <text id="txt_d7_title" x="-129" y="27" font-size="9.5" fill="#0C2340" font-weight="bold">蓝湖温泉</text>
+    <text id="txt_d7_sub" x="-129" y="39" font-size="8" fill="#475569">羽毛大峡谷 · 泡温泉</text>
+  </g>
+
+  <!-- 9. MAP LEGEND CARD (Top-Left Ocean) -->
+  <g transform="translate(45, 50)" filter="url(#cardShadow)">
+    <rect width="235" height="205" rx="8" fill="#FFFFFF" fill-opacity="0.94" stroke="#CBD5E1" stroke-width="1"></rect>
+    
+    <!-- Legend Header -->
+    <rect x="0" y="0" width="235" height="32" rx="8" fill="#0C2340"></rect>
+    <rect x="0" y="22" width="235" height="10" fill="#0C2340"></rect>
+    <text id="txt_leg_title_en" x="14" y="21" font-size="11" font-family="'Cinzel', serif" font-weight="bold" fill="#F8FAFC" letter-spacing="0.1em">ICELAND ITINERARY MAP</text>
+    <text id="txt_leg_title_zh" x="220" y="21" font-size="8.5" fill="#C5A059" text-anchor="end">行程地图</text>
+
+    <!-- Legend Items -->
+    <!-- 1. Tour Route -->
+    <g transform="translate(16, 52)">
+      <line x1="0" y1="0" x2="28" y2="0" stroke="#D4AF37" stroke-width="5" stroke-opacity="0.4"></line>
+      <line x1="0" y1="0" x2="28" y2="0" stroke="#C5A059" stroke-width="2.6"></line>
+      <text id="txt_leg_route" x="36" y="4" font-size="9.5" fill="#1E293B" font-weight="600">7天6晚行程轨迹 (约1,680 km)</text>
+    </g>
+
+    <!-- 2. Ring Road 1 -->
+    <g transform="translate(16, 76)">
+      <line x1="0" y1="0" x2="28" y2="0" stroke="#64748B" stroke-width="2" stroke-dasharray="5,4"></line>
+      <text id="txt_leg_ring" x="36" y="4" font-size="9.5" fill="#475569">冰岛1号环岛公路</text>
+    </g>
+
+    <!-- 3. Day Marker Badge -->
+    <g transform="translate(16, 101)">
+      <circle cx="14" cy="0" r="7.5" fill="#0C2340" stroke="#C5A059" stroke-width="1.5"></circle>
+      <text x="14" y="3" font-size="7" fill="#FFFFFF" font-weight="bold" text-anchor="middle">D#</text>
+      <text id="txt_leg_points" x="36" y="4" font-size="9.5" fill="#1E293B" font-weight="600">每日核心目的地与游览亮点</text>
+    </g>
+
+    <!-- 4. Overnight Hotel -->
+    <g transform="translate(16, 126)">
+      <circle cx="14" cy="0" r="7.5" fill="#C5A059" stroke="#0C2340" stroke-width="1.2"></circle>
+      <text x="14" y="3" font-size="6.5" fill="#0C2340" text-anchor="middle">🏨</text>
+      <text id="txt_leg_hotels" x="36" y="4" font-size="9.5" fill="#1E293B">甄选下榻酒店 </text>
+    </g>
+
+    <!-- 5. Glacier Icecap -->
+    <g transform="translate(16, 151)">
+      <rect x="0" y="-6" width="28" height="12" rx="3" fill="#FFFFFF" stroke="#A2D0E6" stroke-width="1.2"></rect>
+      <text id="txt_leg_glaciers" x="36" y="4" font-size="9.5" fill="#475569">主要冰盖冰川 (国家公园重点生态区)</text>
+    </g>
+
+    <!-- 6. Key Stats Footer -->
+    <g transform="translate(14, 182)">
+      <line x1="0" y1="-8" x2="207" y2="-8" stroke="#E2E8F0" stroke-width="1"></line>
+      <text id="txt_leg_footer" x="0" y="5" font-size="8.5" fill="#64748B">气候特征：11月冬季 · 极光爆发季 · 蓝冰洞黄金期</text>
+    </g>
+  </g>
+
+  <!-- 10. COMPASS ROSE (Top-Right Ocean) -->
+  <g transform="translate(900, 75)" filter="url(#badgeShadow)">
+    <circle cx="0" cy="0" r="26" fill="#FFFFFF" fill-opacity="0.9" stroke="#CBD5E1" stroke-width="1"></circle>
+    <!-- Compass Cross -->
+    <line x1="0" y1="-22" x2="0" y2="22" stroke="#94A3B8" stroke-width="0.8"></line>
+    <line x1="-22" y1="0" x2="22" y2="0" stroke="#94A3B8" stroke-width="0.8"></line>
+    <!-- Star Points -->
+    <polygon points="0,-22 4,-4 0,0 -4,-4" fill="#C5A059"></polygon>
+    <polygon points="0,22 4,4 0,0 -4,4" fill="#64748B"></polygon>
+    <polygon points="-22,0 -4,-4 0,0 -4,4" fill="#64748B"></polygon>
+    <polygon points="22,0 4,-4 0,0 4,4" fill="#64748B"></polygon>
+    <circle cx="0" cy="0" r="3" fill="#0C2340"></circle>
+    <text x="0" y="-25" font-family="'Cinzel', serif" font-size="11" font-weight="bold" fill="#0C2340" text-anchor="middle">N</text>
+    <text x="0" y="34" font-family="'Cinzel', serif" font-size="8" fill="#64748B" text-anchor="middle">S</text>
+    <text x="-32" y="3" font-family="'Cinzel', serif" font-size="8" fill="#64748B" text-anchor="middle">W</text>
+    <text x="32" y="3" font-family="'Cinzel', serif" font-size="8" fill="#64748B" text-anchor="middle">E</text>
+  </g>
+
+  <!-- 11. MAP SCALE BAR (Bottom-Right Ocean) -->
+  <g transform="translate(820, 740)" filter="url(#badgeShadow)">
+    <rect x="-10" y="-16" width="160" height="34" rx="4" fill="#FFFFFF" fill-opacity="0.88" stroke="#CBD5E1" stroke-width="0.8"></rect>
+    <text x="70" y="-4" font-size="8" fill="#64748B" text-anchor="middle" font-family="'Cinzel', serif">SCALE / 比例尺</text>
+    <!-- Scale line: 100km ≈ 80px -->
+    <line x1="10" y1="6" x2="130" y2="6" stroke="#0C2340" stroke-width="2"></line>
+    <line x1="10" y1="2" x2="10" y2="10" stroke="#0C2340" stroke-width="2"></line>
+    <line x1="70" y1="3" x2="70" y2="9" stroke="#0C2340" stroke-width="1.5"></line>
+    <line x1="130" y1="2" x2="130" y2="10" stroke="#0C2340" stroke-width="2"></line>
+    <text x="10" y="19" font-size="8" fill="#475569" text-anchor="middle">0</text>
+    <text x="70" y="19" font-size="8" fill="#475569" text-anchor="middle">50 km</text>
+    <text x="130" y="19" font-size="8" fill="#475569" text-anchor="middle">100 km</text>
+  </g>
+</svg>
+      </div>
+    </div>
+
+<div class="summary-table-wrap">
       <table class="summary-table">
         <thead>
           <tr>
@@ -1425,11 +1752,6 @@
     <div class="section-header" id="day-by-day">
       <span class="section-tag">PART 03</span>
       <h2 class="section-title">每日详细行程</h2>
-    </div>
-
-    <div class="itinerary-controls">
-      <span class="controls-hint">💡 点击任意卡片可展开或收起当日详情</span>
-      <button class="expand-all-btn" onclick="toggleAllDays()">展开全部天数</button>
     </div>
 
     <!-- Day 1 Card -->
@@ -1522,7 +1844,7 @@
           </div>
           <div class="timeline-item">
             <span class="timeline-time">19:00</span>
-            <span>享用隆重的冰岛特色欢迎晚餐，随后入住酒店休整，褪去长途飞行疲惫。</span>
+            <span>晚餐后，入住酒店休整。</span>
           </div>
         </div>
         <!-- Attraction Cards Grid -->
@@ -1724,7 +2046,7 @@
           </div>
           <div class="timeline-item">
             <span class="timeline-time">12:45</span>
-            <span>特别安排在著名的Friðheimar地热温室农场享用暖心番茄汤与手工烘焙新鲜面包；</span>
+            <span>安排在著名的Friðheimar地热温室农场享用午餐；</span>
           </div>
           <div class="timeline-item">
             <span class="timeline-time">14:00</span>
@@ -2380,10 +2702,10 @@
       <h2 class="section-title">出行准备清单</h2>
     </div>
 
-    <div class="checklist-wrap">
+        <div class="checklist-wrap">
       <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
         <h3 style="font-size:1.15rem; color:var(--primary-navy);">行李准备自查清单（点击可直接打钩标记）</h3>
-        <span id="checklist-counter" style="font-size:0.85rem; font-weight:700; color:var(--gold-dark);">已完成 0 / 23 项</span>
+        <span id="checklist-counter" style="font-size:0.85rem; font-weight:700; color:var(--gold-dark);">已完成 0 / 27 项</span>
       </div>
       <div class="checklist-progress-bar-wrap">
         <div class="checklist-progress-bar" id="progressBar"></div>
@@ -2391,28 +2713,33 @@
 
       <!-- Group 1 -->
       <div class="checklist-group">
-        <div class="checklist-group-title"><span>🛂</span> 1. 证件与金融类</div>
+        <div class="checklist-group-title"><span>🛂</span> 1. 证件与金融</div>
         <div class="checklist-items">
           <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 护照原件（有效期距返程日6个月以上）</label>
           <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 申根个人旅游/商务签证有效页</label>
-          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 电子行程单及酒店确认单打印件</label>
+          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 电子行程单及酒店确认函打印件</label>
           <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> Visa/MasterCard芯片双币或全币信用卡</label>
-          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 牢记信用卡4位PIN码（自助加油与购票必备）</label>
           <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 适量欧元现金（200-300欧应急备用）</label>
+        </div>
+        <div class="checklist-tip-box" style="margin-top:12px; padding:10px 14px; background:#F8FAFC; border-left:3px solid var(--gold-accent); border-radius:4px; font-size:0.85rem; color:var(--text-muted); line-height:1.6;">
+          <strong>💡 定制师专业建议与注意事项：</strong>请将护照首页和签证页拍照保存在手机相册中备用；信用卡请务必向银行确认已开通境外交易并牢记4位数字消费密码（PIN码）。
         </div>
       </div>
 
       <!-- Group 2 -->
       <div class="checklist-group">
-        <div class="checklist-group-title"><span>🧥</span> 2. 专业服装鞋履（洋葱式穿法）</div>
+        <div class="checklist-group-title"><span>🧥</span> 2. 专业服装鞋履 （洋葱式穿法）</div>
         <div class="checklist-items">
-          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> GORE-TEX硬壳防风防水冲锋衣（防大风暴雪）</label>
-          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> GORE-TEX防风防水冲锋裤</label>
-          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 800蓬高保暖轻量羽绒服 / 抓绒衣（中层保暖）</label>
-          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 美利奴羊毛保暖速干内衣裤 2-3套（严禁纯棉）</label>
-          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 中高帮GORE-TEX防水防滑登山鞋（安装冰爪必备）</label>
-          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 加厚美利奴羊毛徒步袜 3-4双</label>
+          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 防风防水冲锋衣</label>
+          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 防风防水冲锋裤</label>
+          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 羽绒服 / 抓绒衣</label>
+          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 保暖内衣裤（2-3套）</label>
+          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 中高帮防水防滑登山鞋</label>
+          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 厚袜（3-4双）</label>
           <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 泳衣 / 泳裤（蓝湖地热温泉必备）</label>
+        </div>
+        <div class="checklist-tip-box" style="margin-top:12px; padding:10px 14px; background:#F8FAFC; border-left:3px solid var(--gold-accent); border-radius:4px; font-size:0.85rem; color:var(--text-muted); line-height:1.6;">
+          <strong>💡 定制师专业建议与注意事项：</strong>冰岛风大雨雪多，普通雨伞与风衣完全无效，外壳必须严格防风防水；登山鞋请在行前磨合适应，勿穿新鞋磨脚。
         </div>
       </div>
 
@@ -2420,41 +2747,55 @@
       <div class="checklist-group">
         <div class="checklist-group-title"><span>🧤</span> 3. 防寒配件类</div>
         <div class="checklist-items">
-          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 加厚抓绒防风保暖毛线帽（必须能完全包覆耳朵）</label>
-          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 防风抓绒护脸围脖 / 魔术头巾（防刀割强风）</label>
-          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 防风防水保暖手套（具备触屏功能最佳）</label>
-          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 偏光防紫外线太阳镜 / 滑雪镜（防雪地强反光）</label>
-          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 暖宝宝贴片 / 暖手宝 / 手机发热贴（防手机冻关机）</label>
+          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 加厚抓绒防风保暖毛线帽（能包住耳朵）</label>
+          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 防风抓绒护脸围脖 / 魔术头巾</label>
+          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 防风防水保暖手套（带触屏功能）</label>
+          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 偏光防紫外线太阳镜</label>
+          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 暖宝宝贴片 / 暖手宝 / 手机发热贴</label>
+        </div>
+        <div class="checklist-tip-box" style="margin-top:12px; padding:10px 14px; background:#F8FAFC; border-left:3px solid var(--gold-accent); border-radius:4px; font-size:0.85rem; color:var(--text-muted); line-height:1.6;">
+          <strong>💡 定制师专业建议与注意事项：</strong>冬季海风强劲刺骨，围脖与护耳帽是防止感冒的绝对神器；雪地与冰川反光极其强烈，墨镜为护眼必备；暖宝宝可有效防止手机在低温下电池假死自动关机。
         </div>
       </div>
 
       <!-- Group 4 -->
       <div class="checklist-group">
-        <div class="checklist-group-title"><span>📷</span> 4. 数码摄影与日用医药类</div>
+        <div class="checklist-group-title"><span>📷</span> 4. 数码与摄影类</div>
         <div class="checklist-items">
-          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 欧洲标准双圆孔转换插头（欧标/德标插头）</label>
-          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 大容量移动充电宝（≤100Wh，严禁托运随身带）</label>
-          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 稳固三脚架（夜间长曝光拍摄极光的核心神器）</label>
-          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 单反/微单相机、大光圈镜头及备用电池</label>
+          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 欧洲标准双圆孔转换插头（德标/欧标）</label>
+          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 大容量多口充电宝（≤2000毫安，随身携带）</label>
+          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 手机及相机充电线、多孔排插</label>
+          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 三脚架（夜间拍摄极光的核心关键）</label>
+          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 单反/微单相机及大光圈广角镜头</label>
+          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 充足容量SD高速储存卡及备用电池</label>
+        </div>
+        <div class="checklist-tip-box" style="margin-top:12px; padding:10px 14px; background:#F8FAFC; border-left:3px solid var(--gold-accent); border-radius:4px; font-size:0.85rem; color:var(--text-muted); line-height:1.6;">
+          <strong>💡 定制师专业建议与注意事项：</strong>冰岛电压230V，插头为欧标两个圆柱形插孔；充电宝与备用锂电池严禁托运，必须随身登机；严寒天气相机电池消耗速度极快，多备电池并贴身保温。
+        </div>
+      </div>
+
+      <!-- Group 5 -->
+      <div class="checklist-group">
+        <div class="checklist-group-title"><span>🧴</span> 5. 日用个护与医药</div>
+        <div class="checklist-items">
           <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 个人洗漱用品及便携拖鞋（欧洲酒店多不提供）</label>
-          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 保湿面霜、防冻裂润唇膏及身体乳</label>
-          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 保温水杯（随时盛装天然纯净冰川冷水饮用）</label>
-          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 个人常用应急药品（感冒药、胃肠药、创口贴等）</label>
+          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 高倍防晒霜及高滋润度润唇膏、身体乳</label>
+          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 保温水杯（随时盛装天然纯净冰川水）</label>
+          <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 常用应急个人药品：感冒退烧药、胃肠药、止泻药、晕车贴、创口贴、个人慢病常备药</label>
+        </div>
+        <div class="checklist-tip-box" style="margin-top:12px; padding:10px 14px; background:#F8FAFC; border-left:3px solid var(--gold-accent); border-radius:4px; font-size:0.85rem; color:var(--text-muted); line-height:1.6;">
+          <strong>💡 定制师专业建议与注意事项：</strong>北欧注重环保，绝大部分高品质酒店不主动配备一次性牙刷牙膏及拖鞋，请自备；冬季冰岛气候干燥且风大，高保湿面霜及唇膏必不可少。
         </div>
       </div>
     </div>
-</div>
-
-  <!-- Footer -->
+  </div><!-- Footer -->
   
 
 <footer>
-    <div style="max-width:800px; margin:0 auto;">
-      <p style="font-family:'Cinzel', serif; font-size:1.1rem; color:#FFFFFF; letter-spacing:0.15em;">BESPOKE TRAVEL</p>
-      <p>广东奥维信息科技有限公司 尊享定制执行计划</p>
-      <p style="font-size:0.8rem; color:var(--text-light); margin-top:12px;">
-        © 2026 专属旅行定制服务中心 | 极地探索 · 匠心研磨 | 愿冰火之歌化作永恒璀璨的记忆
-      </p>
+    <div style="max-width:800px; margin:0 auto; text-align:center;">
+      <p style="font-family:'Playfair Display', Garamond, 'Cinzel', Georgia, serif; font-size:1.25rem; font-weight:700; color:#FFFFFF; letter-spacing:0.18em; text-transform:uppercase; margin:0; line-height:1.2;">TERRASIGHT TRAVEL</p>
+      <p style="font-family:'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size:0.56rem; font-weight:500; color:#6e6e6e; letter-spacing:0.06em; text-transform:uppercase; margin:6px auto 0 auto; max-width:240px; line-height:1.3;">Shape Your Sight, Shape Your Land</p>
+      <p style="font-family:'Playfair Display', 'Songti SC', 'Noto Serif SC', Georgia, serif; font-size:0.86rem; color:#6e6e6e; letter-spacing:0.12em; margin:10px 0 0 0; font-weight:400;">在大地的壮阔里，遇见更辽阔的自己</p>
     </div>
   </footer>
 
