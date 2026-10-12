@@ -444,9 +444,16 @@
       align-items: center;
     }
     .flight-card-header .airline {
+      display: flex;
+      align-items: baseline;
+      gap: 0.35em;
       font-weight: 700;
       font-size: 0.95rem;
       letter-spacing: 0.04em;
+    }
+    .flight-card-header .flight-segment::before {
+      content: "·";
+      margin-right: 0.35em;
     }
     .flight-card-header .flight-badge {
       background: var(--gold-action);
@@ -530,48 +537,100 @@
       justify-content: space-between;
     }
 
-    /* Itinerary Summary Table */
-    .summary-table-wrap {
+    /* Itinerary overview: map plus compact day summaries */
+    .summary-overview-card {
+      margin-bottom: 34px;
+      overflow: hidden;
       background: var(--bg-white);
-      border-radius: var(--radius-lg);
       border: 1px solid var(--border-color);
-      overflow-x: auto;
-      margin-bottom: 40px;
-      box-shadow: var(--shadow-sm);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
     }
-    .summary-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.9rem;
-      min-width: 680px;
+    .summary-overview-card .itinerary-map-card {
+      margin: 0;
+      padding: 30px 32px 0;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
     }
-    .summary-table th {
+    .summary-days {
+      display: block;
+      padding: 8px 48px 32px;
+    }
+    .summary-day-row {
+      display: grid;
+      grid-template-columns: 54px minmax(0, 1fr);
+      gap: 0 14px;
+      min-width: 0;
+      padding: 20px 0 22px;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid var(--border-color);
+      border-radius: 0;
+      box-shadow: none;
+    }
+    .summary-day-row:last-child { border-bottom: 0; padding-bottom: 4px; }
+    .summary-day-heading {
+      display: grid;
+      grid-column: 1 / -1;
+      grid-template-columns: 54px minmax(0, 1fr);
+      align-items: start;
+      gap: 14px;
+    }
+    .summary-day-badge {
+      display: inline-flex;
+      flex: none;
+      width: 54px;
+      min-height: 36px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
       background: var(--primary-navy);
       color: #FFFFFF;
-      font-weight: 600;
-      padding: 14px 16px;
-      text-align: left;
-    }
-    .summary-table td {
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--border-color);
-      color: var(--text-main);
-      vertical-align: top;
-    }
-    .summary-table tr:last-child td {
-      border-bottom: none;
-    }
-    .summary-table tr:nth-child(even) {
-      background-color: #FBF8F1;
-    }
-    .day-pill {
-      background: var(--arctic-blue);
-      color: var(--primary-navy);
+      font-size: 1rem;
       font-weight: 700;
-      font-size: 0.82rem;
-      padding: 4px 10px;
-      border-radius: 20px;
+      line-height: 1;
+      text-decoration: none;
+    }
+    .summary-day-badge:focus-visible {
+      outline: 2px solid var(--gold-accent);
+      outline-offset: 3px;
+    }
+    .summary-route { flex: 1 1 auto; min-width: 0; }
+    .summary-route-stops {
+      margin: 1px 0 0;
+      color: var(--primary-navy);
+      font-size: 1.08rem;
+      line-height: 1.4;
+    }
+    .summary-route-stop {
+      overflow-wrap: anywhere;
+    }
+    .summary-route-stop:not(:last-child)::after {
       display: inline-block;
+      margin: 0 0.2em;
+      color: var(--navy-light);
+      content: "—";
+    }
+    .summary-day-facts {
+      display: grid;
+      grid-column: 1 / -1;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 16px;
+      margin: 5px 0 0;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      line-height: 1.55;
+    }
+    .summary-day-fact { min-width: 0; margin: 0; overflow-wrap: anywhere; }
+    .summary-day-fact-label { color: var(--text-muted); }
+    .summary-day-highlights {
+      grid-column: 1 / -1;
+      margin: 6px 0 0;
+      color: var(--text-main);
+      font-size: 0.86rem;
+      line-height: 1.55;
     }
 
     /* Day-by-Day Section (Audley Style) */
@@ -1316,6 +1375,18 @@
         gap: 8px;
         padding: 12px 14px;
       }
+      .flight-card-header .airline {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 0;
+        line-height: 1.2;
+      }
+      .flight-card-header .flight-segment {
+        font-size: 0.82em;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+      }
+      .flight-card-header .flight-segment::before { content: none; }
       .flight-card-body {
         padding: 16px;
       }
@@ -1348,6 +1419,27 @@
         scroll-snap-align: start;
         scroll-snap-stop: always;
       }
+      .summary-overview-card { border-radius: 16px; }
+      .summary-overview-card .itinerary-map-card { padding: 22px 16px 0; }
+      .summary-days { padding: 8px 18px 22px; }
+      .summary-day-row {
+        grid-template-columns: 42px minmax(0, 1fr);
+        gap: 0 10px;
+        padding: 15px 0 17px;
+      }
+      .summary-day-heading {
+        grid-template-columns: 42px minmax(0, 1fr);
+        gap: 10px;
+      }
+      .summary-day-badge { flex: none; width: 42px; min-height: 32px; font-size: 0.88rem; }
+      .summary-route-stops { font-size: 0.88rem; line-height: 1.35; }
+      .summary-day-facts {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        gap: 8px;
+        margin-top: 3px;
+        font-size: 0.72rem;
+      }
+      .summary-day-highlights { margin-top: 5px; font-size: 0.84rem; }
       .attraction-img-wrap {
         height: 200px;
       }
@@ -1477,7 +1569,7 @@
       margin: 0;
       color: var(--primary-navy);
       font-family: 'Cinzel', serif;
-      font-size: 1.35rem;
+      font-size: clamp(0.8rem, 4vw, 1.35rem);
       letter-spacing: 0.04em;
     }
     .itinerary-map-viewport {
@@ -1654,7 +1746,7 @@
       <!-- Outbound 1 -->
       <div class="flight-card">
         <div class="flight-card-header">
-          <span class="airline">芬兰航空 Finnair · 去程第1段</span>
+          <span class="airline"><span class="airline-name">芬兰航空 Finnair</span><span class="flight-segment">去程第1段</span></span>
           <span class="flight-badge">AY100</span>
         </div>
         <div class="flight-card-body">
@@ -1690,7 +1782,7 @@
       <!-- Outbound 2 -->
       <div class="flight-card">
         <div class="flight-card-header">
-          <span class="airline">芬兰航空 Finnair · 去程第2段</span>
+          <span class="airline"><span class="airline-name">芬兰航空 Finnair</span><span class="flight-segment">去程第2段</span></span>
           <span class="flight-badge">AY993</span>
         </div>
         <div class="flight-card-body">
@@ -1726,7 +1818,7 @@
       <!-- Inbound 1 -->
       <div class="flight-card">
         <div class="flight-card-header">
-          <span class="airline">芬兰航空 Finnair · 回程第1段</span>
+          <span class="airline"><span class="airline-name">芬兰航空 Finnair</span><span class="flight-segment">回程第1段</span></span>
           <span class="flight-badge">AY992</span>
         </div>
         <div class="flight-card-body">
@@ -1762,7 +1854,7 @@
       <!-- Inbound 2 -->
       <div class="flight-card">
         <div class="flight-card-header">
-          <span class="airline">芬兰航空 Finnair · 回程第2段</span>
+          <span class="airline"><span class="airline-name">芬兰航空 Finnair</span><span class="flight-segment">回程第2段</span></span>
           <span class="flight-badge">AY099</span>
         </div>
         <div class="flight-card-body">
@@ -1812,13 +1904,14 @@
     </div>
 
     
-    <!-- Section 2 Map: Itinerary at a Glance Map -->
-    <div class="itinerary-map-card">
-                  <div class="itinerary-map-heading">
-        <h3 class="itinerary-map-title">冰岛冬季7天6晚 · 行程地图</h3>
-      </div>
+    <!-- Section 2 overview: map and day-by-day route summaries -->
+    <div class="summary-overview-card">
+      <div class="itinerary-map-card">
+        <div class="itinerary-map-heading">
+          <h3 class="itinerary-map-title">冰岛冬季7天6晚 · 行程地图</h3>
+        </div>
 
-      <!-- SVG Map Container -->
+        <!-- SVG Map Container -->
       <div class="itinerary-map-viewport">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" class="itinerary-map-svg">
   <defs>
@@ -2134,8 +2227,158 @@
     <text x="130" y="19" font-size="8" fill="#5A5A54" text-anchor="middle">100 km</text>
   </g>
 </svg>
+        </div>
+        <p class="map-click-hint">点击地图可放大查看高清细节</p>
       </div>
-      <p class="map-click-hint">点击地图可放大查看高清细节</p>
+      <div class="summary-days" role="list" aria-label="每日路线摘要">
+        <article class="summary-day-row" role="listitem" aria-labelledby="summary-route-title-1">
+          <div class="summary-day-heading">
+            <a class="summary-day-badge" href="#day-1" aria-label="查看第1天完整行程">D1</a>
+            <div class="summary-route">
+              <h3 class="summary-route-stops" id="summary-route-title-1" aria-label="香港机场 至 赫尔辛基">
+                  <span class="summary-route-stop">香港机场</span>
+                  <span class="summary-route-stop">赫尔辛基</span>
+              </h3>
+            </div>
+          </div>
+          <div class="summary-day-facts">
+            <p class="summary-day-fact"><span class="summary-day-fact-label">住宿：</span>飞机上</p>
+            <p class="summary-day-fact"><span class="summary-day-fact-label">里程/耗时：</span>国际航班 / 约14h 15m</p>
+          </div>
+          <p class="summary-day-highlights">搭乘芬兰航空豪华客机夜航，开启极地序章</p>
+        </article>
+        <article class="summary-day-row" role="listitem" aria-labelledby="summary-route-title-2">
+          <div class="summary-day-heading">
+            <a class="summary-day-badge" href="#day-2" aria-label="查看第2天完整行程">D2</a>
+            <div class="summary-route">
+              <h3 class="summary-route-stops" id="summary-route-title-2" aria-label="赫尔辛基 至 雷克雅未克 至 首都漫步">
+                  <span class="summary-route-stop">赫尔辛基</span>
+                  <span class="summary-route-stop">雷克雅未克</span>
+                  <span class="summary-route-stop">首都漫步</span>
+              </h3>
+            </div>
+          </div>
+          <div class="summary-day-facts">
+            <p class="summary-day-fact"><span class="summary-day-fact-label">住宿：</span>Center Hotels Arnarhvoll</p>
+            <p class="summary-day-fact"><span class="summary-day-fact-label">里程/耗时：</span>约50km / 约45min</p>
+          </div>
+          <p class="summary-day-highlights">大教堂、太阳航海者、哈帕音乐厅、托宁湖漫步</p>
+        </article>
+        <article class="summary-day-row" role="listitem" aria-labelledby="summary-route-title-3">
+          <div class="summary-day-heading">
+            <a class="summary-day-badge" href="#day-3" aria-label="查看第3天完整行程">D3</a>
+            <div class="summary-route">
+              <h3 class="summary-route-stops" id="summary-route-title-3" aria-label="雷克雅未克 至 斯奈山半岛">
+                  <span class="summary-route-stop">雷克雅未克</span>
+                  <span class="summary-route-stop">斯奈山半岛</span>
+              </h3>
+            </div>
+          </div>
+          <div class="summary-day-facts">
+            <p class="summary-day-fact"><span class="summary-day-fact-label">住宿：</span>Hótel Bifröst</p>
+            <p class="summary-day-fact"><span class="summary-day-fact-label">里程/耗时：</span>约260km / 约3.5h</p>
+          </div>
+          <p class="summary-day-highlights">国家公园、草帽山神峰、布迪尔黑教堂、阿尔纳斯塔皮</p>
+        </article>
+        <article class="summary-day-row" role="listitem" aria-labelledby="summary-route-title-4">
+          <div class="summary-day-heading">
+            <a class="summary-day-badge" href="#day-4" aria-label="查看第4天完整行程">D4</a>
+            <div class="summary-route">
+              <h3 class="summary-route-stops" id="summary-route-title-4" aria-label="斯奈山半岛 至 黄金圈">
+                  <span class="summary-route-stop">斯奈山半岛</span>
+                  <span class="summary-route-stop">黄金圈</span>
+              </h3>
+            </div>
+          </div>
+          <div class="summary-day-facts">
+            <p class="summary-day-fact"><span class="summary-day-fact-label">住宿：</span>The Greenhouse Hotel</p>
+            <p class="summary-day-fact"><span class="summary-day-fact-label">里程/耗时：</span>约240km / 约3.5h</p>
+          </div>
+          <p class="summary-day-highlights">辛格维利尔裂缝、蓝色秘境瀑布、间歇泉、黄金瀑布</p>
+        </article>
+        <article class="summary-day-row" role="listitem" aria-labelledby="summary-route-title-5">
+          <div class="summary-day-heading">
+            <a class="summary-day-badge" href="#day-5" aria-label="查看第5天完整行程">D5</a>
+            <div class="summary-route">
+              <h3 class="summary-route-stops" id="summary-route-title-5" aria-label="黄金圈 至 冰岛南部">
+                  <span class="summary-route-stop">黄金圈</span>
+                  <span class="summary-route-stop">冰岛南部</span>
+              </h3>
+            </div>
+          </div>
+          <div class="summary-day-facts">
+            <p class="summary-day-fact"><span class="summary-day-fact-label">住宿：</span>Fosshotel Nupar</p>
+            <p class="summary-day-fact"><span class="summary-day-fact-label">里程/耗时：</span>约280km / 约4h</p>
+          </div>
+          <p class="summary-day-highlights">塞里雅兰瀑布、斯科加瀑布、迪霍拉里海角、雷尼斯黑沙滩</p>
+        </article>
+        <article class="summary-day-row" role="listitem" aria-labelledby="summary-route-title-6">
+          <div class="summary-day-heading">
+            <a class="summary-day-badge" href="#day-6" aria-label="查看第6天完整行程">D6</a>
+            <div class="summary-route">
+              <h3 class="summary-route-stops" id="summary-route-title-6" aria-label="冰河湖 至 蓝冰洞 至 钻石沙滩">
+                  <span class="summary-route-stop">冰河湖</span>
+                  <span class="summary-route-stop">蓝冰洞</span>
+                  <span class="summary-route-stop">钻石沙滩</span>
+              </h3>
+            </div>
+          </div>
+          <div class="summary-day-facts">
+            <p class="summary-day-fact"><span class="summary-day-fact-label">住宿：</span>Fosshotel Nupar</p>
+            <p class="summary-day-fact"><span class="summary-day-fact-label">里程/耗时：</span>约220km / 约3h</p>
+          </div>
+          <p class="summary-day-highlights">杰古沙龙冰河湖浮冰、超级吉普探秘水晶蓝冰洞、钻石沙滩</p>
+        </article>
+        <article class="summary-day-row" role="listitem" aria-labelledby="summary-route-title-7">
+          <div class="summary-day-heading">
+            <a class="summary-day-badge" href="#day-7" aria-label="查看第7天完整行程">D7</a>
+            <div class="summary-route">
+              <h3 class="summary-route-stops" id="summary-route-title-7" aria-label="冰岛苔原 至 羽毛峡谷 至 蓝湖温泉">
+                  <span class="summary-route-stop">冰岛苔原</span>
+                  <span class="summary-route-stop">羽毛峡谷</span>
+                  <span class="summary-route-stop">蓝湖温泉</span>
+              </h3>
+            </div>
+          </div>
+          <div class="summary-day-facts">
+            <p class="summary-day-fact"><span class="summary-day-fact-label">住宿：</span>Aurora Hotel at Airport&#xA0;</p>
+            <p class="summary-day-fact"><span class="summary-day-fact-label">里程/耗时：</span>约320km / 约4.5h</p>
+          </div>
+          <p class="summary-day-highlights">埃尔德熔岩苔原、羽毛大峡谷、蓝湖顶级地热温泉疗愈</p>
+        </article>
+        <article class="summary-day-row" role="listitem" aria-labelledby="summary-route-title-8">
+          <div class="summary-day-heading">
+            <a class="summary-day-badge" href="#day-8" aria-label="查看第8天完整行程">D8</a>
+            <div class="summary-route">
+              <h3 class="summary-route-stops" id="summary-route-title-8" aria-label="雷克雅未克 至 赫尔辛基">
+                  <span class="summary-route-stop">雷克雅未克</span>
+                  <span class="summary-route-stop">赫尔辛基</span>
+              </h3>
+            </div>
+          </div>
+          <div class="summary-day-facts">
+            <p class="summary-day-fact"><span class="summary-day-fact-label">住宿：</span>飞机上</p>
+            <p class="summary-day-fact"><span class="summary-day-fact-label">里程/耗时：</span>国际航班 / 约3h 20m</p>
+          </div>
+          <p class="summary-day-highlights">步行至航站楼办理登机，07:30乘机离开冰岛，中转候机</p>
+        </article>
+        <article class="summary-day-row" role="listitem" aria-labelledby="summary-route-title-9">
+          <div class="summary-day-heading">
+            <a class="summary-day-badge" href="#day-9" aria-label="查看第9天完整行程">D9</a>
+            <div class="summary-route">
+              <h3 class="summary-route-stops" id="summary-route-title-9" aria-label="赫尔辛基 至 香港">
+                  <span class="summary-route-stop">赫尔辛基</span>
+                  <span class="summary-route-stop">香港</span>
+              </h3>
+            </div>
+          </div>
+          <div class="summary-day-facts">
+            <p class="summary-day-fact"><span class="summary-day-fact-label">住宿：</span>飞机上</p>
+            <p class="summary-day-fact"><span class="summary-day-fact-label">里程/耗时：</span>国际航班 / 约11h 20m</p>
+          </div>
+          <p class="summary-day-highlights">AY099起飞返港，19:05降落香港机场T1，圆满落幕</p>
+        </article>
+      </div>
     </div>
 
     <dialog class="map-lightbox" id="mapLightbox" aria-label="冰岛冬季7天6晚行程地图高清查看">
@@ -2152,84 +2395,6 @@
       <div class="map-lightbox-viewport" id="mapLightboxViewport"></div>
     </dialog>
 
-<div class="summary-table-wrap">
-      <table class="summary-table">
-        <thead>
-          <tr>
-            <th>天数</th>
-            <th>日期</th>
-            <th>行程路线</th>
-            <th>里程 / 耗时</th>
-            <th>精选住宿</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="day-pill">D1</span></td>
-            <td>11.07 周六</td>
-            <td><strong>香港国际机场—赫尔辛基</strong><br><small class="text-muted">搭乘芬兰航空豪华客机夜航，开启极地序章</small></td>
-            <td>国际航班 / 约14h 15m</td>
-            <td>芬兰航空豪华客机（机上休息）</td>
-          </tr>
-          <tr>
-            <td><span class="day-pill">D2</span></td>
-            <td>11.08 周日</td>
-            <td><strong>赫尔辛基—雷克雅未克—首都漫步</strong><br><small class="text-muted">大教堂、太阳航海者、哈帕音乐厅、托宁湖漫步</small></td>
-            <td>约50km / 约45min</td>
-            <td>Center Hotels Arnarhvoll（市中心）</td>
-          </tr>
-          <tr>
-            <td><span class="day-pill">D3</span></td>
-            <td>11.09 周一</td>
-            <td><strong>雷克雅未克—斯奈山半岛</strong><br><small class="text-muted">国家公园、草帽山神峰、布迪尔黑教堂、阿尔纳斯塔皮</small></td>
-            <td>约260km / 约3.5h</td>
-            <td>Hótel Bifröst（极光原野度假酒店）</td>
-          </tr>
-          <tr>
-            <td><span class="day-pill">D4</span></td>
-            <td>11.10 周二</td>
-            <td><strong>斯奈山半岛—黄金圈</strong><br><small class="text-muted">辛格维利尔裂缝、蓝色秘境瀑布、间歇泉、黄金瀑布</small></td>
-            <td>约240km / 约3.5h</td>
-            <td>The Greenhouse Hotel（温室生态设计酒店）</td>
-          </tr>
-          <tr>
-            <td><span class="day-pill">D5</span></td>
-            <td>11.11 周三</td>
-            <td><strong>黄金圈—冰岛南部</strong><br><small class="text-muted">塞里雅兰瀑布、斯科加瀑布、迪霍拉里海角、雷尼斯黑沙滩</small></td>
-            <td>约280km / 约4h</td>
-            <td>Fosshotel Nupar（旷野全景极光酒店）</td>
-          </tr>
-          <tr>
-            <td><span class="day-pill">D6</span></td>
-            <td>11.12 周四</td>
-            <td><strong>冰河湖-蓝冰洞-钻石沙滩</strong><br><small class="text-muted">杰古沙龙冰河湖浮冰、超级吉普探秘水晶蓝冰洞、钻石沙滩</small></td>
-            <td>约220km / 约3h</td>
-            <td>Fosshotel Nupar（旷野极光酒店·连住）</td>
-          </tr>
-          <tr>
-            <td><span class="day-pill">D7</span></td>
-            <td>11.13 周五</td>
-            <td><strong>冰岛苔原—羽毛峡谷—蓝湖温泉</strong><br><small class="text-muted">埃尔德熔岩苔原、羽毛大峡谷、蓝湖顶级地热温泉疗愈</small></td>
-            <td>约320km / 约4.5h</td>
-            <td>Aurora Hotel at KEF Airport（机场极光酒店）</td>
-          </tr>
-          <tr>
-            <td><span class="day-pill">D8</span></td>
-            <td>11.14 周六</td>
-            <td><strong>雷克雅未克— 赫尔辛基</strong><br><small class="text-muted">步行至航站楼办理登机，07:30乘机离开冰岛，中转候机</small></td>
-            <td>国际航班 / 约3h 20m</td>
-            <td>芬兰航空豪华客机（机上过夜休息）</td>
-          </tr>
-          <tr>
-            <td><span class="day-pill">D9</span></td>
-            <td>11.15 周日</td>
-            <td><strong>赫尔辛基—香港</strong><br><small class="text-muted">AY099起飞返港，19:05降落香港机场T1，圆满落幕</small></td>
-            <td>国际航班 / 约11h 20m</td>
-            <td>温馨的家</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
 
     <!-- Section 3: Day-by-Day Itinerary (Audley Signature Style) -->
     <div class="section-header" id="day-by-day">
