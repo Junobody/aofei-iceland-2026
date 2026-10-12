@@ -697,46 +697,18 @@
       color: #733E26;
     }
 
-    /* Timeline */
+    /* Daily narrative */
     .timeline-container {
       margin: 20px 0 28px;
-      position: relative;
-      padding-left: 20px;
     }
-    .timeline-container::before {
-      content: "";
-      position: absolute;
-      left: 6px;
-      top: 8px;
-      bottom: 8px;
-      width: 2px;
-      background: #D8C9B7;
-    }
-    .timeline-item {
-      position: relative;
-      margin-bottom: 14px;
-      padding-left: 12px;
+    .day-description {
+      margin: 0;
       font-size: 0.9rem;
-      line-height: 1.6;
+      line-height: 1.8;
     }
-    .timeline-item:last-child {
-      margin-bottom: 0;
-    }
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: -19px;
-      top: 6px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--gold-accent);
-      border: 2px solid var(--bg-white);
-    }
-    .timeline-time {
-      font-weight: 700;
+    .day-description strong {
       color: var(--primary-navy);
-      margin-right: 8px;
+      font-weight: 700;
     }
 
     /* Attraction Cards */
@@ -1354,6 +1326,12 @@
         font-size: 0.516rem !important;
       }
     }
+    @media (min-width: 769px) {
+      footer p:nth-of-type(2) {
+        max-width: none !important;
+        white-space: nowrap;
+      }
+    }
   </style>
 </head>
 <body id="page-top">
@@ -1371,13 +1349,13 @@
   <!-- Sticky Nav Tabs -->
   <nav class="sticky-tabs"  id="stickyNav">
         <div class="tabs-track">
-      <a href="#page-top" data-scrollspy-target="#flights" class="tab-btn active"><span>✈️</span> 基础信息与航班</a>
-      <a href="#brief" class="tab-btn"><span>🗺️</span> 行程简要</a>
-      <a href="#day-by-day" class="tab-btn"><span>🧭</span> 每日详细行程</a>
-      <a href="#guide" class="tab-btn"><span>📖</span> 目的地指南</a>
-      <a href="#safety" class="tab-btn"><span>🛡️</span> 旅游安全指南</a>
-      <a href="#aurora" class="tab-btn"><span>🌌</span> 极光观测指南</a>
-      <a href="#checklist" class="tab-btn"><span>🧳</span> 出行准备清单</a>
+      <a href="#page-top" data-scrollspy-target="#flights" class="tab-btn active">基础信息与航班</a>
+      <a href="#brief" class="tab-btn">行程简要</a>
+      <a href="#day-by-day" class="tab-btn">每日详细行程</a>
+      <a href="#guide" class="tab-btn">目的地指南</a>
+      <a href="#safety" class="tab-btn">旅游安全指南</a>
+      <a href="#aurora" class="tab-btn">极光观测指南</a>
+      <a href="#checklist" class="tab-btn">出行准备清单</a>
     </div>
   </nav>
 
@@ -2030,29 +2008,12 @@
         <!-- Chips Bar -->
         <div class="day-chips-bar">
           <span class="chip drive">✈️ 航程：芬兰航空 AY100（21:45起飞，次日06:00抵达）/ 飞行约14小时15分</span>
-          <span class="chip hotel">🏨 住宿：芬兰航空豪华客机（机上休息）</span>
-          <span class="chip meals">🍽️ 餐饮：早餐：自理 ｜ 午餐：自理 ｜ 晚餐：芬兰航空机上特色正餐</span>
+          <span class="chip hotel">🏨 住宿：飞机上</span>
+          <span class="chip meals">🍽️ 餐饮：早餐（酒店自助早餐）｜午餐（自理）｜晚餐（自理）</span>
         </div>
 
         <!-- Timeline -->
-        <div class="timeline-container">
-          <div class="timeline-item">
-            <span class="timeline-time">18:45</span>
-            <span>游客自行前往香港国际机场一号客运大楼（T1）；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">19:15</span>
-            <span>在芬兰航空值机柜台办理登机手续与行李托运（请备好护照原件及有效申根签证）；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">20:00</span>
-            <span>通过安全检查与海关边检，前往指定登机口候机；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">21:45</span>
-            <span>搭乘芬兰航空AY100豪华客机起飞，飞往赫尔辛基，开启极地冰火奇境之旅。</span>
-          </div>
-        </div>
+        <div class="timeline-container"><p class="day-description">出发当天请自行前往香港国际机场一号客运大楼（T1），在芬兰航空值机柜台办理登机手续与行李托运（请备好护照原件及有效申根签证）。完成安全检查与海关边检后前往指定登机口候机，随后搭乘芬兰航空AY100豪华客机飞往赫尔辛基，开启极地冰火奇境之旅。</p></div>
       </div>
     </div>
 
@@ -2072,41 +2033,12 @@
         <!-- Chips Bar -->
         <div class="day-chips-bar">
           <span class="chip drive">🚗 车程：约50公里 / 约45分钟（机场至市区）</span>
-          <span class="chip hotel">🏨 住宿：Center Hotels Arnarhvoll（位于雷克雅未克市中心）</span>
-          <span class="chip meals">🍽️ 餐饮：早餐：机上便餐 ｜ 午餐：赫尔辛基中转自理/简餐 ｜ 晚餐：自理（雷克雅未克特色餐馆）</span>
+          <span class="chip hotel">🏨 住宿：Center Hotels Arnarhvoll</span>
+          <span class="chip meals">🍽️ 餐饮：早餐（酒店自助早餐）｜午餐（自理）｜晚餐（自理）</span>
         </div>
 
         <!-- Timeline -->
-        <div class="timeline-container">
-          <div class="timeline-item">
-            <span class="timeline-time">06:00</span>
-            <span>航班安全平稳降落芬兰赫尔辛基万塔国际机场，贵宾持护照办理申根入境手续；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">08:00</span>
-            <span>于万塔机场候机大厅自由漫步，体验享誉全球的极简芬兰设计与免税空间；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">14:00</span>
-            <span>转乘芬兰航空AY993航班飞往冰岛；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">15:55</span>
-            <span>航班降落冰岛凯夫拉维克国际机场（KEF），办理提取行李手续；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">16:45</span>
-            <span>领队将在到达大厅热忱接机，登上舒适的专车，驶向首都雷克雅未克；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">17:30</span>
-            <span>漫步打卡市区四大地标：雷克雅未克大教堂、太阳航海者、哈帕音乐厅、托宁湖畔；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">19:00</span>
-            <span>晚餐后，入住酒店休整。</span>
-          </div>
-        </div>
+        <div class="timeline-container"><p class="day-description">航班平稳降落芬兰赫尔辛基万塔国际机场后，持护照办理申根入境手续。候机期间可在大厅自由漫步，体验芬兰极简设计与免税空间，之后转乘芬兰航空AY993飞往冰岛。抵达凯夫拉维克国际机场（KEF）并提取行李后，由领队在到达大厅接机，乘坐专车前往雷克雅未克。抵达市区后漫步游览<strong>【雷克雅未克大教堂】</strong>、<strong>【太阳航海者】</strong>、<strong>【哈帕音乐厅】</strong>和<strong>【托宁湖畔】</strong>，晚餐后入住酒店休整。</p></div>
         <!-- Attraction Cards Grid -->
         <div class="attractions-grid" tabindex="0" role="group" aria-label="每日景点卡片列表">
             <div class="attraction-card">
@@ -2178,44 +2110,11 @@
         <div class="day-chips-bar">
           <span class="chip drive">🚗 车程：约260公里 / 约3.5小时</span>
           <span class="chip hotel">🏨 住宿：Hótel Bifröst</span>
-          <span class="chip meals">🍽️ 餐饮：早餐：酒店自助早餐 ｜ 午餐：自理（沿途特色餐馆）｜ 晚餐：自理（酒店或周边餐厅）</span>
+          <span class="chip meals">🍽️ 餐饮：早餐（酒店自助早餐）｜午餐（自理）｜晚餐（自理）</span>
         </div>
 
         <!-- Timeline -->
-        <div class="timeline-container">
-          <div class="timeline-item">
-            <span class="timeline-time">08:30</span>
-            <span>酒店享用元气丰盛的北欧早餐；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">09:15</span>
-            <span>启程，沿1号环岛公路向西北行驶，穿越海底隧道，奔赴“冰岛缩影”斯奈山半岛；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">11:00</span>
-            <span>探访孤傲肃穆的【布迪尔黑教堂】，在荒原雪地中定格极简主义大片；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">12:15</span>
-            <span>抵达野性诗意的【阿尔纳斯塔皮小镇】，漫步黑玄武岩海蚀崖，享用当地精美午餐；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">14:00</span>
-            <span>深入【斯奈山国家公园】，远眺凡尔纳笔下通往地心的斯奈菲尔雪山；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">15:30</span>
-            <span>抵达世界级摄影圣殿【草帽山】及草帽山瀑布，捕捉冬日下午金色天光下的魔幻山体倒影；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">17:30</span>
-            <span>乘车前往毕弗罗斯特酒店，入住位于无光害荒原带的极光酒店Hótel Bifröst；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">19:00</span>
-            <span>享用晚餐；夜间于酒店旷野守候绚丽北极光。</span>
-          </div>
-        </div>
+        <div class="timeline-container"><p class="day-description">在酒店享用北欧早餐后，沿1号环岛公路向西北行驶，穿越海底隧道前往有“冰岛缩影”之称的<strong>【斯奈山半岛】</strong>。途中探访<strong>【布迪尔黑教堂】</strong>，在荒原雪地中拍照；随后前往<strong>【阿尔纳斯塔皮小镇】</strong>，漫步黑玄武岩海蚀崖，并自理午餐。之后深入<strong>【斯奈山国家公园】</strong>，远眺<strong>【斯奈菲尔雪山】</strong>，再前往<strong>【草帽山】</strong>和<strong>【草帽山瀑布】</strong>，捕捉冬日天光下的魔幻倒影。傍晚乘车入住无光害荒原带的Hótel Bifröst，晚餐自理，夜间可在酒店周边守候北极光。</p></div>
         <!-- Attraction Cards Grid -->
         <div class="attractions-grid" tabindex="0" role="group" aria-label="每日景点卡片列表">
             <div class="attraction-card">
@@ -2286,45 +2185,12 @@
         <!-- Chips Bar -->
         <div class="day-chips-bar">
           <span class="chip drive">🚗 车程：约240公里 / 约3.5小时</span>
-          <span class="chip hotel">🏨 住宿：The Greenhouse Hotel（塞尔福斯温室生态设计酒店）</span>
-          <span class="chip meals">🍽️ 餐饮：早餐：酒店自助早餐 ｜ 午餐：自理（沿途特色餐馆）｜ 晚餐：自理（酒店或周边餐厅）</span>
+          <span class="chip hotel">🏨 住宿：The Greenhouse Hotel</span>
+          <span class="chip meals">🍽️ 餐饮：早餐（酒店自助早餐）｜午餐（自理）｜晚餐（自理）</span>
         </div>
 
         <!-- Timeline -->
-        <div class="timeline-container">
-          <div class="timeline-item">
-            <span class="timeline-time">08:30</span>
-            <span>酒店享用早餐，出发前往名扬天下的“黄金圈”（Golden Circle）；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">10:00</span>
-            <span>踏入世界文化遗产【辛格维利尔国家公园】，漫步美洲与欧亚大陆板块交界大裂缝；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">11:30</span>
-            <span>寻访隐藏在旷野中的【蓝色秘境瀑布】，惊叹于那抹不可思议的荧光冰蓝；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">12:45</span>
-            <span>安排在著名的Friðheimar地热温室农场享用午餐；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">14:00</span>
-            <span>游览【盖歇尔间歇泉】，屏息见证史托克间歇泉数十米沸水蓝泡冲天的震撼瞬间；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">15:00</span>
-            <span>造访王者之势的【黄金瀑布】，感受冰瀑飞流与漫天水雾折射的壮美；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">16:30</span>
-            <span>探访色彩浓烈的【凯瑞斯火山口湖】，俯瞰碧绿矿物湖水与红褐色火山口岩壁；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">18:00</span>
-            <span>入住充满北欧生态设计感的The Greenhouse Hotel，晚餐体验特色美食，夜间守候极光。</span>
-          </div>
-        </div>
+        <div class="timeline-container"><p class="day-description">早餐后出发前往黄金圈，游览世界文化遗产<strong>【辛格维利尔国家公园】</strong>，漫步美洲与欧亚大陆板块交界的大裂缝。随后探访<strong>【蓝色秘境瀑布】</strong>，欣赏荧光冰蓝；午餐可在Friðheimar地热温室农场自理。接着游览<strong>【盖歇尔间歇泉】</strong>，观看史托克间歇泉数十米沸水蓝泡喷发，再造访<strong>【黄金瀑布】</strong>，感受冰瀑飞流与水雾景致，最后探访<strong>【凯瑞斯火山口湖】</strong>，俯瞰碧绿湖水与红褐色火山口岩壁。傍晚入住The Greenhouse Hotel，晚餐自理，夜间可守候极光。</p></div>
         <!-- Attraction Cards Grid -->
         <div class="attractions-grid" tabindex="0" role="group" aria-label="每日景点卡片列表">
             <div class="attraction-card">
@@ -2407,49 +2273,12 @@
         <!-- Chips Bar -->
         <div class="day-chips-bar">
           <span class="chip drive">🚗 车程：约280公里 / 约4小时</span>
-          <span class="chip hotel">🏨 住宿：Fosshotel Nupar（旷野全景极光酒店）</span>
-          <span class="chip meals">🍽️ 餐饮：早餐：酒店自助早餐 ｜ 午餐：自理（沿途特色餐馆）｜ 晚餐：自理（酒店或周边餐厅）</span>
+          <span class="chip hotel">🏨 住宿：Fosshotel Nupar</span>
+          <span class="chip meals">🍽️ 餐饮：早餐（酒店自助早餐）｜午餐（自理）｜晚餐（自理）</span>
         </div>
 
         <!-- Timeline -->
-        <div class="timeline-container">
-          <div class="timeline-item">
-            <span class="timeline-time">08:30</span>
-            <span>早餐后离开温室酒店，沿1号公路全速进入壮怀激烈的冰岛南部海岸；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">09:45</span>
-            <span>打卡柔美灵动的【塞里雅兰瀑布】，欣赏冰挂晶莹剔透的水幕盛景；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">11:15</span>
-            <span>前往浩瀚壮阔的【斯科加瀑布】，晴好时在浓密水雾中邂逅双道彩虹；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">12:45</span>
-            <span>抵维克小镇，享用热气腾腾的特色午餐；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">13:45</span>
-            <span>登上狂风呼啸的【迪霍拉里海角观景台】，俯视天然玄武岩海蚀巨拱与无垠黑色海岸；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">14:45</span>
-            <span>步入令人敬畏的【雷尼斯黑沙滩】，观赏玄武岩石柱长廊，严格保持安全距离观赏大洋巨浪；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">16:00</span>
-            <span>登上山坡俯瞰【维克红顶教堂】，定格南岸小镇温情画卷；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">18:00</span>
-            <span>穿越辽阔熔岩原野，抵达孤立于荒原中的极光圣地Fosshotel Nupar并办理入住；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">19:00</span>
-            <span>享用酒店特色晚餐，夜幕降临后在客房落地窗前或空旷雪原守候舞动的欧若拉极光。</span>
-          </div>
-        </div>
+        <div class="timeline-container"><p class="day-description">早餐后离开温室酒店，沿1号公路驶入冰岛南部海岸。先游览<strong>【塞里雅兰瀑布】</strong>，欣赏晶莹剔透的冰挂水幕；再前往<strong>【斯科加瀑布】</strong>，天气晴好时可在浓密水雾中寻找双道彩虹。随后抵达维克小镇自理午餐，再登上<strong>【迪霍拉里海角观景台】</strong>，俯瞰天然玄武岩海蚀巨拱与无垠黑色海岸。之后前往<strong>【雷尼斯黑沙滩】</strong>，观赏玄武岩石柱长廊，并与海浪保持安全距离；最后登上山坡远眺<strong>【维克红顶教堂】</strong>。傍晚穿越辽阔熔岩原野，入住Fosshotel Nupar，晚餐自理，夜间可在客房落地窗前或空旷雪原守候极光。</p></div>
         <!-- Attraction Cards Grid -->
         <div class="attractions-grid" tabindex="0" role="group" aria-label="每日景点卡片列表">
             <div class="attraction-card">
@@ -2532,41 +2361,12 @@
         <!-- Chips Bar -->
         <div class="day-chips-bar">
           <span class="chip drive">🚗 车程：约220公里 / 约3小时</span>
-          <span class="chip hotel">🏨 住宿：Fosshotel Nupar（荒原景观极光酒店，连住第2晚）</span>
-          <span class="chip meals">🍽️ 餐饮：早餐：酒店自助早餐 ｜ 午餐：自理（沿途特色餐馆）｜ 晚餐：自理（酒店或周边餐厅）</span>
+          <span class="chip hotel">🏨 住宿：Fosshotel Nupar</span>
+          <span class="chip meals">🍽️ 餐饮：早餐（酒店自助早餐）｜午餐（自理）｜晚餐（自理）</span>
         </div>
 
         <!-- Timeline -->
-        <div class="timeline-container">
-          <div class="timeline-item">
-            <span class="timeline-time">09:00</span>
-            <span>在雪峰日出的宁静晨光中享用早餐，启程前往欧洲最大冰川——瓦特纳冰川保护区；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">10:30</span>
-            <span>抵达震撼心灵的【杰古沙龙冰河湖】，伫立湖畔凝望千万年前纯净降雪挤压而成的巨型幽蓝浮冰；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">12:00</span>
-            <span>于冰河湖接待中心享用热汤与能量简餐；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">12:45</span>
-            <span>会合专业高山向导，换乘轮胎高逾一人的超级越野巨轮吉普（Super Jeep），颠簸驶入无垠冰原腹地；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">13:00</span>
-            <span>正式开启【蓝冰洞探秘】（活动时间13:00-16:00）：向导指导穿戴专业头盔与冰爪，步入深邃魔幻的天然宝石蓝水晶冰宫；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">16:15</span>
-            <span>返回冰河湖出发点，其后前往漫步【钻石沙滩】，在黑色沙滩上触摸被海浪打磨得晶莹剔透的千万年碎冰宝石；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">17:30</span>
-            <span>乘专车返回Fosshotel Nupar，今晚继续在此得天独厚的极光原野享受宁静与极光夜色。</span>
-          </div>
-        </div>
+        <div class="timeline-container"><p class="day-description">在雪峰日出的晨光中享用早餐后，启程前往欧洲最大的冰川区域——瓦特纳冰川保护区。抵达<strong>【杰古沙龙冰河湖】</strong>后，伫立湖畔欣赏由古老降雪层层挤压形成的幽蓝浮冰；午餐可在冰河湖接待中心自理。之后与专业高山向导会合，换乘轮胎高逾一人的超级越野巨轮吉普（Super Jeep），驶入无垠冰原腹地，展开<strong>【蓝冰洞探秘】</strong>。听从向导指导穿戴专业头盔与冰爪，步入深邃魔幻的天然水晶蓝冰宫。活动结束后返回冰河湖出发点，再漫步<strong>【钻石沙滩】</strong>，欣赏黑色沙滩上被海浪打磨得晶莹剔透的碎冰。傍晚乘专车返回Fosshotel Nupar，晚餐自理，可在周边静候极光。</p></div>
         <!-- Attraction Cards Grid -->
         <div class="attractions-grid" tabindex="0" role="group" aria-label="每日景点卡片列表">
             <div class="attraction-card">
@@ -2625,49 +2425,12 @@
         <!-- Chips Bar -->
         <div class="day-chips-bar">
           <span class="chip drive">🚗 车程：约320公里 / 约4.5小时</span>
-          <span class="chip hotel">🏨 住宿：Aurora Hotel at Reykjavik-Keflavik Airport Terminal（机场航站楼极光酒店）</span>
-          <span class="chip meals">🍽️ 餐饮：早餐：酒店自助早餐 ｜ 午餐：自理（沿途特色餐馆）｜ 晚餐：自理（蓝湖温泉餐厅或机场酒店餐厅）</span>
+          <span class="chip hotel">🏨 住宿：Aurora Hotel at Airport&#xA0;</span>
+          <span class="chip meals">🍽️ 餐饮：早餐（酒店自助早餐）｜午餐（自理）｜晚餐（自理）</span>
         </div>
 
         <!-- Timeline -->
-        <div class="timeline-container">
-          <div class="timeline-item">
-            <span class="timeline-time">08:30酒店享用早餐，打包行李，乘专车沿1号公路西行返程；</span>
-            <span></span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">09:30</span>
-            <span>驻足于苍凉壮阔的【埃尔德熔岩苔原地带】，于观景台领略大地数百年沉淀的绿毯苍茫；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">11:00</span>
-            <span>轻徒步探索宛若天工雕刻的【羽毛大峡谷】，沿着步道俯瞰曲折幽深的碧水深谷；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">13:00</span>
-            <span>于沿途风情小镇享用热腾腾的西式午餐；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">15:00</span>
-            <span>专车一路西进，穿过雷克雅内斯半岛火山地热熔岩区；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">17:30</span>
-            <span>抵达世界著名的顶级地热疗愈圣地——【蓝湖温泉】（已预约18:00黄金入场场次）；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">18:00</span>
-            <span>更衣入汤，浸润在奶蓝色的矿物温泉中，敷纯白硅泥面膜，品尝特饮，彻底舒缓数日旅途身心；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">20:00</span>
-            <span>泡完温泉，可在蓝湖畔享用极具格调的Lava熔岩餐厅享用晚餐；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">21:45</span>
-            <span>回到凯夫拉维克机场，入住步行仅数分钟可达的机场极光酒店。</span>
-          </div>
-        </div>
+        <div class="timeline-container"><p class="day-description">在酒店享用早餐并整理行李后，乘专车沿1号公路西行返程。途中于<strong>【埃尔德熔岩苔原地带】</strong>驻足观景，欣赏大地沉淀出的苍茫绿毯；随后轻徒步探索<strong>【羽毛大峡谷】</strong>，沿步道俯瞰曲折幽深的碧水深谷。午餐在沿途风情小镇自理，之后继续穿越雷克雅内斯半岛的火山、地热与熔岩地貌。抵达<strong>【蓝湖温泉】</strong>后更衣入汤，浸润奶蓝色矿物温泉，敷上纯白硅泥面膜并品尝特饮，舒缓数日旅途身心（已预约黄金入场场次）。晚餐自理，也可选择在蓝湖畔的Lava熔岩餐厅用餐；之后前往凯夫拉维克机场，入住步行数分钟可达的机场极光酒店。</p></div>
         <!-- Attraction Cards Grid -->
         <div class="attractions-grid" tabindex="0" role="group" aria-label="每日景点卡片列表">
             <div class="attraction-card">
@@ -2726,37 +2489,12 @@
         <!-- Chips Bar -->
         <div class="day-chips-bar">
           <span class="chip drive">✈️ 航程：芬兰航空 AY992（07:30起飞，13:50抵达）/ 飞行约3小时20分</span>
-          <span class="chip hotel">🏨 住宿：芬兰航空豪华客机（机上过夜休息）</span>
-          <span class="chip meals">🍽️ 餐饮：早餐：领队在机场购买简餐 ｜ 午餐：机上轻食/机场自理 ｜ 晚餐：机上正餐</span>
+          <span class="chip hotel">🏨 住宿：飞机上</span>
+          <span class="chip meals">🍽️ 餐饮：早餐（领队在机场购买简餐）｜午餐（自理）｜晚餐（自理）</span>
         </div>
 
         <!-- Timeline -->
-        <div class="timeline-container">
-          <div class="timeline-item">
-            <span class="timeline-time">05:15</span>
-            <span>于机场酒店前台退房，步行5分钟轻松步入凯夫拉维克机场航站楼；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">05:30</span>
-            <span>前往海关退税柜台盖章办理退税款核验，办理行李托运与登机牌；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">07:30</span>
-            <span>搭乘芬兰航空AY992早班机飞离冰岛，舷窗外最后俯瞰白雪皑皑的极地荒原；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">13:50</span>
-            <span>航班降落芬兰赫尔辛基万塔机场，中转时间充裕（约11小时55分）；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">15:00</span>
-            <span>贵宾可于赫尔辛基万塔机场免税店尽情采购北欧伴手礼，或在国际贵宾候机厅舒适休息洗漱；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">23:30</span>
-            <span>前往登机口准备登机。</span>
-          </div>
-        </div>
+        <div class="timeline-container"><p class="day-description">从机场酒店退房后，步行约5分钟即可进入凯夫拉维克机场航站楼。由领队在机场购买简餐作为早餐，随后前往海关退税柜台办理退税核验，并完成行李托运与登机手续。搭乘芬兰航空AY992飞离冰岛，可从舷窗最后眺望白雪皑皑的极地荒原；抵达芬兰赫尔辛基万塔机场后，中转时间约11小时55分。期间可在机场免税店选购北欧伴手礼，或前往国际贵宾候机厅休息、洗漱，之后前往登机口准备转机。</p></div>
       </div>
     </div>
 
@@ -2776,25 +2514,12 @@
         <!-- Chips Bar -->
         <div class="day-chips-bar">
           <span class="chip drive">✈️ 航程：芬兰航空 AY099（01:45起飞，19:05抵达）/ 飞行约11小时20分</span>
-          <span class="chip hotel">🏨 住宿：温馨的家</span>
-          <span class="chip meals">🍽️ 餐饮：早餐：机上早餐 ｜ 午餐：机上精选正餐 ｜ 晚餐：自理 / 抵达香港后享用家常便饭</span>
+          <span class="chip hotel">🏨 住宿：飞机上</span>
+          <span class="chip meals">🍽️ 餐饮：早餐（自理）｜午餐（自理）｜晚餐（自理）</span>
         </div>
 
         <!-- Timeline -->
-        <div class="timeline-container">
-          <div class="timeline-item">
-            <span class="timeline-time">01:45</span>
-            <span>芬兰航空AY099豪华客机从赫尔辛基起飞返港；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">19:05</span>
-            <span>航班安全平稳降落香港国际机场一号客运大楼（T1）；</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">20:00</span>
-            <span>提取托运行李，办理入境手续。互道珍重，各自返回温馨家中！</span>
-          </div>
-        </div>
+        <div class="timeline-container"><p class="day-description">搭乘芬兰航空AY099豪华客机从赫尔辛基起飞返港，航班平稳降落香港国际机场一号客运大楼（T1）后，提取托运行李并办理入境手续。行程至此结束，大家互道珍重，各自返回温馨家中。</p></div>
       </div>
     </div>
 
@@ -2973,7 +2698,7 @@
 
       <!-- Group 1 -->
       <div class="checklist-group">
-        <div class="checklist-group-title"><span>🛂</span> 1. 证件与金融</div>
+        <div class="checklist-group-title">1. 证件与金融</div>
         <div class="checklist-items">
           <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 护照原件（有效期距返程日6个月以上）</label>
           <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 申根个人旅游/商务签证有效页</label>
@@ -2988,7 +2713,7 @@
 
       <!-- Group 2 -->
       <div class="checklist-group">
-        <div class="checklist-group-title"><span>🧥</span> 2. 专业服装鞋履 （洋葱式穿法）</div>
+        <div class="checklist-group-title">2. 专业服装鞋履 （洋葱式穿法）</div>
         <div class="checklist-items">
           <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 防风防水冲锋衣</label>
           <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 防风防水冲锋裤</label>
@@ -3005,7 +2730,7 @@
 
       <!-- Group 3 -->
       <div class="checklist-group">
-        <div class="checklist-group-title"><span>🧤</span> 3. 防寒配件类</div>
+        <div class="checklist-group-title">3. 防寒配件类</div>
         <div class="checklist-items">
           <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 加厚抓绒防风保暖毛线帽（能包住耳朵）</label>
           <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 防风抓绒护脸围脖 / 魔术头巾</label>
@@ -3020,7 +2745,7 @@
 
       <!-- Group 4 -->
       <div class="checklist-group">
-        <div class="checklist-group-title"><span>📷</span> 4. 数码与摄影类</div>
+        <div class="checklist-group-title">4. 数码与摄影类</div>
         <div class="checklist-items">
           <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 欧洲标准双圆孔转换插头（德标/欧标）</label>
           <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 大容量多口充电宝（≤2000毫安，随身携带）</label>
@@ -3036,7 +2761,7 @@
 
       <!-- Group 5 -->
       <div class="checklist-group">
-        <div class="checklist-group-title"><span>🧴</span> 5. 日用个护与医药</div>
+        <div class="checklist-group-title">5. 日用个护与医药</div>
         <div class="checklist-items">
           <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 个人洗漱用品及便携拖鞋（欧洲酒店多不提供）</label>
           <label class="check-label" onclick="toggleCheck(this)"><span class="check-box"></span> 高倍防晒霜及高滋润度润唇膏、身体乳</label>
