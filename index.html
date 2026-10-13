@@ -575,7 +575,7 @@
       display: grid;
       grid-column: 1 / -1;
       grid-template-columns: 54px minmax(0, 1fr);
-      align-items: start;
+      align-items: stretch;
       gap: 14px;
     }
     .summary-day-badge {
@@ -597,12 +597,27 @@
       outline: 2px solid var(--gold-accent);
       outline-offset: 3px;
     }
-    .summary-route { flex: 1 1 auto; min-width: 0; }
+    .summary-route {
+      display: flex;
+      flex: 1 1 auto;
+      min-width: 0;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1px;
+    }
+    .summary-route-date {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 500;
+      line-height: 1.2;
+    }
     .summary-route-stops {
-      margin: 1px 0 0;
+      margin: 0;
       color: var(--primary-navy);
       font-size: 1.08rem;
-      line-height: 1.4;
+      font-weight: 700;
+      line-height: 1.25;
     }
     .summary-route-stop {
       overflow-wrap: anywhere;
@@ -1432,11 +1447,12 @@
         gap: 10px;
       }
       .summary-day-badge { flex: none; width: 42px; min-height: 32px; font-size: 0.88rem; }
-      .summary-route-stops { font-size: 0.88rem; line-height: 1.35; }
+      .summary-route-date { font-size: 0.62rem; line-height: 1.15; }
+      .summary-route-stops { font-size: 0.88rem; line-height: 1.25; }
       .summary-day-facts {
-        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-        gap: 8px;
-        margin-top: 3px;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2px;
+        margin-top: 4px;
         font-size: 0.72rem;
       }
       .summary-day-highlights { margin-top: 5px; font-size: 0.84rem; }
@@ -2235,6 +2251,7 @@
           <div class="summary-day-heading">
             <a class="summary-day-badge" href="#day-1" aria-label="查看第1天完整行程">D1</a>
             <div class="summary-route">
+              <p class="summary-route-date">11月7日</p>
               <h3 class="summary-route-stops" id="summary-route-title-1" aria-label="香港机场 至 赫尔辛基">
                   <span class="summary-route-stop">香港机场</span>
                   <span class="summary-route-stop">赫尔辛基</span>
@@ -2251,6 +2268,7 @@
           <div class="summary-day-heading">
             <a class="summary-day-badge" href="#day-2" aria-label="查看第2天完整行程">D2</a>
             <div class="summary-route">
+              <p class="summary-route-date">11月8日</p>
               <h3 class="summary-route-stops" id="summary-route-title-2" aria-label="赫尔辛基 至 雷克雅未克 至 首都漫步">
                   <span class="summary-route-stop">赫尔辛基</span>
                   <span class="summary-route-stop">雷克雅未克</span>
@@ -2268,6 +2286,7 @@
           <div class="summary-day-heading">
             <a class="summary-day-badge" href="#day-3" aria-label="查看第3天完整行程">D3</a>
             <div class="summary-route">
+              <p class="summary-route-date">11月9日</p>
               <h3 class="summary-route-stops" id="summary-route-title-3" aria-label="雷克雅未克 至 斯奈山半岛">
                   <span class="summary-route-stop">雷克雅未克</span>
                   <span class="summary-route-stop">斯奈山半岛</span>
@@ -2284,6 +2303,7 @@
           <div class="summary-day-heading">
             <a class="summary-day-badge" href="#day-4" aria-label="查看第4天完整行程">D4</a>
             <div class="summary-route">
+              <p class="summary-route-date">11月10日</p>
               <h3 class="summary-route-stops" id="summary-route-title-4" aria-label="斯奈山半岛 至 黄金圈">
                   <span class="summary-route-stop">斯奈山半岛</span>
                   <span class="summary-route-stop">黄金圈</span>
@@ -2300,6 +2320,7 @@
           <div class="summary-day-heading">
             <a class="summary-day-badge" href="#day-5" aria-label="查看第5天完整行程">D5</a>
             <div class="summary-route">
+              <p class="summary-route-date">11月11日</p>
               <h3 class="summary-route-stops" id="summary-route-title-5" aria-label="黄金圈 至 冰岛南部">
                   <span class="summary-route-stop">黄金圈</span>
                   <span class="summary-route-stop">冰岛南部</span>
@@ -2316,6 +2337,7 @@
           <div class="summary-day-heading">
             <a class="summary-day-badge" href="#day-6" aria-label="查看第6天完整行程">D6</a>
             <div class="summary-route">
+              <p class="summary-route-date">11月12日</p>
               <h3 class="summary-route-stops" id="summary-route-title-6" aria-label="冰河湖 至 蓝冰洞 至 钻石沙滩">
                   <span class="summary-route-stop">冰河湖</span>
                   <span class="summary-route-stop">蓝冰洞</span>
@@ -2333,6 +2355,7 @@
           <div class="summary-day-heading">
             <a class="summary-day-badge" href="#day-7" aria-label="查看第7天完整行程">D7</a>
             <div class="summary-route">
+              <p class="summary-route-date">11月13日</p>
               <h3 class="summary-route-stops" id="summary-route-title-7" aria-label="冰岛苔原 至 羽毛峡谷 至 蓝湖温泉">
                   <span class="summary-route-stop">冰岛苔原</span>
                   <span class="summary-route-stop">羽毛峡谷</span>
@@ -2350,6 +2373,7 @@
           <div class="summary-day-heading">
             <a class="summary-day-badge" href="#day-8" aria-label="查看第8天完整行程">D8</a>
             <div class="summary-route">
+              <p class="summary-route-date">11月14日</p>
               <h3 class="summary-route-stops" id="summary-route-title-8" aria-label="雷克雅未克 至 赫尔辛基">
                   <span class="summary-route-stop">雷克雅未克</span>
                   <span class="summary-route-stop">赫尔辛基</span>
@@ -2366,6 +2390,7 @@
           <div class="summary-day-heading">
             <a class="summary-day-badge" href="#day-9" aria-label="查看第9天完整行程">D9</a>
             <div class="summary-route">
+              <p class="summary-route-date">11月15日</p>
               <h3 class="summary-route-stops" id="summary-route-title-9" aria-label="赫尔辛基 至 香港">
                   <span class="summary-route-stop">赫尔辛基</span>
                   <span class="summary-route-stop">香港</span>
